@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
+import image27 from "../../assets/image27.png"
 
 export const NewsletterPopup: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,27 +23,31 @@ export const NewsletterPopup: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.3 }}
-            className="bg-white w-full max-w-3xl flex flex-col md:flex-row relative shadow-2xl"
+            className="bg-white w-full max-w-5xl md:min-h-[560px] flex flex-col md:flex-row relative shadow-2xl rounded-xs overflow-hidden"
           >
             {/* Left Image Side */}
-            <div className="md:w-1/2 relative h-64 md:h-auto">
+            <div className="md:w-1/2 relative h-72 sm:h-80 md:h-auto min-h-[320px] md:min-h-[560px]">
               <img 
-                src="https://images.unsplash.com/photo-1583391733958-d25e0b464dba?q=80&w=1000&auto=format&fit=crop" 
+                src={image27} 
                 alt="Family in traditional wear" 
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
             
             {/* Right Form Side */}
-            <div className="md:w-1/2 p-10 flex flex-col justify-center relative">
+            <div className="md:w-1/2 p-10 md:p-14 lg:p-16 flex flex-col justify-center relative bg-white">
               <button 
                 onClick={() => setIsOpen(false)}
-                className="absolute top-4 right-4 text-brand-text hover:text-black focus:outline-none"
+                className="absolute top-5 right-5 text-brand-text/70 hover:text-black focus:outline-none transition-colors"
               >
-                <X strokeWidth={1} className="w-8 h-8" />
+                <X strokeWidth={1} className="w-8 h-8 md:w-9 md:h-9" />
               </button>
               
-              <h2 className="font-serif text-3xl md:text-4xl text-brand-text leading-tight mb-8 mt-4">
+              <div className="text-xs tracking-[0.25em] uppercase text-[#9a7b4f] mb-3 font-medium">
+                STAY CONNECTED
+              </div>
+
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-brand-text leading-[1.15] mb-8 mt-2">
                 Join our community to get<br/>all the upcoming updates.
               </h2>
               
@@ -51,11 +56,11 @@ export const NewsletterPopup: React.FC = () => {
                   type="email" 
                   placeholder="your@gmail.com" 
                   required
-                  className="w-full border border-brand-gray/50 px-4 py-3 text-sm focus:outline-none focus:border-brand-text placeholder-gray-300"
+                  className="w-full border border-brand-gray/50 px-5 py-3.5 text-sm md:text-base focus:outline-none focus:border-brand-text placeholder-gray-400 rounded-xs transition-colors"
                 />
                 <button 
                   type="submit"
-                  className="w-full bg-[#7a7a7a] hover:bg-gray-600 text-white transition-colors py-4 text-sm tracking-wide uppercase"
+                  className="w-full bg-[#7a7a7a] hover:bg-gray-700 text-white transition-colors py-4 text-sm tracking-[0.2em] uppercase font-medium rounded-xs shadow-sm"
                 >
                   Submit
                 </button>
