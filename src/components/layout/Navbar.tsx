@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Link } from "react-router-dom"
 import { Card } from "../ui/Card"
-import kasavuImg from "../../assets/Kasavu.png"
-import logoImg from "../../assets/logo.png"
+import kasavuImg from "../../assets/Kasavu.webp"
+import logoImg from "../../assets/logo.webp"
 
 export const Navbar: React.FC = () => {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false)
@@ -17,22 +17,25 @@ export const Navbar: React.FC = () => {
       <div className="flex items-center gap-10 lg:gap-16">
         {/* Logo Crest */}
         <Link to="/" className="flex flex-col items-center group select-none">
-          <img src={logoImg} alt="SSK Handlooms Logo" className="h-14 md:h-16 w-auto object-contain" />
-          <span className="text-[0.55rem] md:text-[0.6rem] tracking-[0.32em] font-light uppercase text-white/90 mt-1">
-            HANDLOOMS
+          <img src={logoImg} alt="SSK Handlooms Logo" className="w-[123px] h-[66px] object-contain" />
+          <span className="text-[12px] tracking-[4px] font-normal uppercase text-[#F9EFDE] mt-1 font-sans">
+            Handlooms
           </span>
         </Link>
 
         {/* Nav Links */}
-        <div className="hidden md:flex items-center gap-8 lg:gap-10 text-[0.72rem] tracking-[0.22em] font-light uppercase text-white/90">
+        <div className="hidden md:flex items-center gap-[40px] text-[14px] tracking-[4px] font-normal uppercase text-[#F7EBD7] font-sans">
           <a href="#our-story" className="hover:text-white transition-colors">Our Story</a>
           <div 
             className="relative flex items-center"
             onMouseEnter={() => setIsMegaMenuOpen(true)}
             onMouseLeave={() => setIsMegaMenuOpen(false)}
           >
-            <Link to="/collections" className="flex items-center gap-1.5 hover:text-white transition-colors py-2">
-              <span>Collections</span> <span className="text-base font-extralight leading-none">+</span>
+            <Link to="/collections" className="flex items-center gap-3 hover:text-white transition-colors py-2">
+              <span>Collections</span> 
+              <svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.70833 8.70833V2.375H10.2917V8.70833H16.625V10.2917H10.2917V16.625H8.70833V10.2917H2.375V8.70833H8.70833Z" fill="#F7EBD7"/>
+              </svg>
             </Link>
             
             {/* Mega Menu Dropdown */}
@@ -43,7 +46,7 @@ export const Navbar: React.FC = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.2 }}
-                  className="absolute top-12 left-0 bg-white text-brand-text shadow-2xl flex w-[580px] p-8 space-x-8 rounded-sm tracking-normal z-50"
+                  className="absolute top-12 left-0 bg-white text-brand-text shadow-2xl flex w-[580px] p-8 space-x-8 rounded-sm tracking-normal z-50 normal-case"
                 >
                   <div className="flex flex-col space-y-5 text-base font-serif min-w-[140px] text-[#2c2214]">
                     <Link to="/collections" className="hover:text-brand-gold transition-colors font-medium">All Collections</Link>
@@ -81,7 +84,7 @@ export const Navbar: React.FC = () => {
       {/* Right Button */}
       <a
         href="#contact"
-        className="border border-[#b8905c] text-[#b8905c] px-6 py-2.5 md:px-7 md:py-2.5 text-[0.7rem] font-normal tracking-[0.22em] uppercase hover:bg-[#b8905c] hover:text-[#2c2214] transition-all duration-300"
+        className="flex justify-center items-center w-[177px] h-[42px] border border-[#E3C89B] text-[#E3C89B] text-[16px] font-normal tracking-[1.6px] uppercase hover:bg-[#E3C89B] hover:text-white transition-all duration-300 font-sans"
       >
         Get In Touch
       </a>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { X } from "lucide-react"
-import image27 from "../../assets/image27.png"
+import image27 from "../../assets/image27.webp"
 
 export const NewsletterPopup: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)

@@ -1,42 +1,43 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { Heading } from "../components/ui/Heading"
-import heroUploadedImg from "../assets/image.png"
-import womensHandloomImg from "../assets/Women’s Handloom.png"
-import kidsTraditionalImg from "../assets/Kid’s Traditional.png"
-import kasavuImg from "../assets/Kasavu.png"
-import image21 from "../assets/image 21.png"
-import image22Asset from "../assets/image22.png"
-import image23Asset from "../assets/image23.png"
-import image24Asset from "../assets/image24.png"
-import image25Asset from "../assets/image25.png"
-import image26Asset from "../assets/image26.png"
-import image27Asset from "../assets/image27.png"
-import image28Asset from "../assets/image28.png"
-import image29Asset from "../assets/image29.png"
-import image22 from "../assets/Child.png"
-import image23 from "../assets/Man.png"
-import sareeLogo from "../assets/SareeLogo.png"
-import Image1 from "../assets/image1.png"
-import Image2 from "../assets/image2.png"
-import Image3 from "../assets/image3.png"
-import Image4 from "../assets/image4.png"
-import Image5 from "../assets/image5.png"
-import Image6 from "../assets/image6.png"
-import Image7 from "../assets/image7.png"
-import Image8 from "../assets/image8.png"
-import Image9 from "../assets/image9.png"
-import Image10 from "../assets/image10.png"
-import Image11 from "../assets/image11.png"
-import Image12 from "../assets/image12.png"
-import Image13 from "../assets/image13.png"
-import Image14 from "../assets/image14.png"
-import Image15 from "../assets/image15.png"
-import Image16 from "../assets/image16.jpg"
-import Image17 from "../assets/image17.png"
-import Image18 from "../assets/image18.png"
-import Image19 from "../assets/image19.png"
-import Image20 from "../assets/image20.png"
+import heroUploadedImg from "../assets/image.webp"
+import kidsTraditionalImg from "../assets/Kid’s Traditional.webp"
+import kasavuImg from "../assets/Kasavu.webp"
+import image21 from "../assets/image 21.webp"
+import image22Asset from "../assets/image22.webp"
+import image23Asset from "../assets/image23.webp"
+import image24Asset from "../assets/image24.webp"
+import image25Asset from "../assets/image25.webp"
+import image26Asset from "../assets/image26.webp"
+import image27Asset from "../assets/image27.webp"
+import image28Asset from "../assets/image28.webp"
+import image29Asset from "../assets/image29.webp"
+import image22 from "../assets/Child.webp"
+import sareeLogo from "../assets/SareeLogo.webp"
+import Image1 from "../assets/image1.webp"
+import Image2 from "../assets/image2.webp"
+import Image3 from "../assets/image3.webp"
+import Image4 from "../assets/image4.webp"
+import Image5 from "../assets/image5.webp"
+import Image6 from "../assets/image6.webp"
+import Image7 from "../assets/image7.webp"
+import Image8 from "../assets/image8.webp"
+import Image9 from "../assets/image9.webp"
+import Image10 from "../assets/image10.webp"
+import Image11 from "../assets/image11.webp"
+import Image12 from "../assets/image12.webp"
+import Image13 from "../assets/image13.webp"
+import Image14 from "../assets/image14.webp"
+import Image15 from "../assets/image15.webp"
+import Image16 from "../assets/image16.webp"
+import Image17 from "../assets/image17.webp"
+import Image18 from "../assets/image18.webp"
+import Image19 from "../assets/image19.webp"
+import Image20 from "../assets/image20.webp"
+
+const CircularImageReveal = React.lazy(() => 
+  import("../components/CircularImageReveal").then(module => ({ default: module.CircularImageReveal }))
+);
 
 
 export const Home: React.FC = () => {
@@ -51,342 +52,382 @@ export const Home: React.FC = () => {
   return (
     <div className="w-full bg-brand-light text-brand-text font-sans">
 
-      <section className="relative w-full h-[85vh] md:h-screen bg-[#2c2214] overflow-hidden">
+      <section className="relative w-full h-[85vh] md:h-screen bg-white overflow-hidden">
         <img
           src={heroImg}
           alt="SSK Handlooms Hero"
-          className="absolute inset-0 w-full h-full object-cover opacity-90 object-top"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          fetchPriority="high"
+          decoding="async"
         />
-        <div className="absolute inset-0 bg-linear-to-r from-[#1a1410]/60 via-[#1a1410]/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-linear-to-t from-[#fdfcf7]/90 to-transparent" />
+        {/* Figma: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)) */}
+        <div className="absolute inset-0 bg-black/40" />
 
-
-
-        <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-16 lg:px-24">
+        <div className="absolute inset-0 flex flex-col justify-center px-6 md:px-10 lg:px-20">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="max-w-2xl text-white"
+            className="text-white max-w-[600px]"
           >
-            <div className="text-[0.65rem] tracking-[0.3em] uppercase mb-6 opacity-90 border-l border-white/60 pl-3">
+            <div className="text-[14px] tracking-[4.8px] uppercase mb-4 text-white font-sans">
               Established 2008
             </div>
-            <Heading level={1} align="left" className="text-white mb-6 leading-[1.1]">
-              Where Every Tread<br />Tells A <em className="italic">Story</em>
-            </Heading>
-            <p className="text-sm md:text-base opacity-90 max-w-md font-light mb-10 leading-relaxed text-[#fdfcf7]">
+            
+            <h1 
+              className="text-white mb-6 text-4xl md:text-5xl lg:text-[64px] font-medium leading-[120%]"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              Where Every Tread Tells A Story
+            </h1>
+            
+            <p className="text-[18px] md:text-[24px] leading-[150%] text-[#EEEEEE] font-sans font-normal max-w-[570px] mb-12">
               Authentic Kerala Handlooms for the Modern Soul. Weaving the golden threads of tradition into the fabric of contemporary lifestyle.
             </p>
-            <button className="border border-white/60 text-white px-8 py-3 text-xs tracking-[0.2em] uppercase hover:bg-white hover:text-[#2c2214] transition-colors backdrop-blur-sm">
+            
+            <button className="flex justify-center items-center w-[278px] h-[58px] border border-[#E3C89B] text-[#E3C89B] text-[16px] tracking-[1.6px] uppercase hover:bg-[#E3C89B] hover:text-white transition-colors">
               Discover the Weave
             </button>
           </motion.div>
         </div>
 
-        {/* Floating Product Polaroid Stack — fanned deck of polaroids */}
+        {/* Floating Product Polaroid Stack */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="hidden lg:block absolute bottom-12 right-16 xl:right-24 z-20"
+          className="hidden lg:block absolute bottom-20 right-20 xl:right-32 z-20 cursor-pointer"
         >
-          <div className="relative w-64 xl:w-76">
-            {/* Card 3 (Back-most polaroid snapshot) */}
-            <div className="absolute -top-5 left-4 right-4 bg-white p-3 pb-5 rounded-xs shadow-md border border-black/10 opacity-90">
-              <div className="w-full aspect-[4/3] overflow-hidden rounded-xs bg-gray-100">
-                <img src={kasavuImg} alt="" className="w-full h-full object-cover opacity-80" />
+          <div className="relative w-[238px] h-[236px]">
+            {/* Card 3 (Back-most polaroid) - Frame 14 */}
+            <div className="absolute -top-8 left-6 w-[209px] h-[208px] bg-white opacity-90 p-3 shadow-md rotate-[6deg]">
+              <div className="w-full h-[130px] overflow-hidden bg-gray-100 mb-2">
+                <img src={kasavuImg} alt="" className="w-full h-full object-cover" />
+              </div>
+              <div className="px-1 text-left">
+                <p className="text-[14px] text-[#9E9E9E] font-medium leading-[150%] font-sans">BEST SELLER</p>
+                <h4 className="text-[16px] text-[#000000] font-normal leading-[150%]" style={{ fontFamily: "'Playfair Display', serif" }}>Kasavu Sarees</h4>
               </div>
             </div>
 
-            {/* Card 2 (Middle polaroid snapshot) */}
-            <div className="absolute -top-2.5 left-2 right-2 bg-white p-3 pb-5 rounded-xs shadow-lg border border-black/10 opacity-95">
-              <div className="w-full aspect-[4/3] overflow-hidden rounded-xs bg-gray-100">
-                <img src={kasavuImg} alt="" className="w-full h-full object-cover opacity-90" />
+            {/* Card 2 (Middle polaroid) - Frame 13 */}
+            <div className="absolute -top-4 left-3 w-[221px] h-[220px] bg-white opacity-90 p-3 shadow-lg rotate-[3deg]">
+              <div className="w-full h-[142px] overflow-hidden bg-gray-100 mb-2">
+                <img src={kasavuImg} alt="" className="w-full h-full object-cover" />
+              </div>
+              <div className="px-1 text-left">
+                <p className="text-[14px] text-[#9E9E9E] font-medium leading-[150%] font-sans">BEST SELLER</p>
+                <h4 className="text-[16px] text-[#000000] font-normal leading-[150%]" style={{ fontFamily: "'Playfair Display', serif" }}>Kasavu Sarees</h4>
               </div>
             </div>
 
-            {/* Card 1 (Main front polaroid snapshot) */}
-            <div className="relative z-10 bg-white p-3.5 pb-5 xl:p-4 xl:pb-6 rounded-xs shadow-2xl border border-black/10">
-              <div className="w-full aspect-[4/3] overflow-hidden rounded-xs mb-3 xl:mb-4 bg-[#f5f3ed]">
+            {/* Card 1 (Main front polaroid) - Frame 12 */}
+            <motion.div 
+              animate={{ 
+                rotate: [0, 60, 0],
+                x: [0, 180, 0],
+                y: [0, -20, 0]
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                repeatDelay: 1.5,
+                ease: "backInOut"
+              }}
+              className="relative z-10 w-[238px] h-[236px] bg-white p-3 shadow-2xl flex flex-col items-center origin-bottom-left"
+            >
+              <div className="w-[214px] h-[154px] overflow-hidden bg-gray-100 mb-3">
                 <img
                   src={kasavuImg}
                   alt="Kasavu Saree"
-                  className="w-full h-full object-cover object-center"
+                  className="w-full h-full object-cover"
+                  loading="lazy" decoding="async"
                 />
               </div>
-              <div className="text-[#2c2214] px-1 text-left">
-                <p className="text-[0.65rem] tracking-[0.2em] uppercase text-[#9a7b4f] mb-1 font-medium">
+              <div className="w-full px-1 text-left">
+                <p className="text-[14px] text-[#9E9E9E] font-medium leading-[150%] font-sans mb-0.5">
                   BEST SELLER
                 </p>
-                <h4 className="font-serif text-lg xl:text-xl font-normal leading-snug">
+                <h4 className="text-[16px] text-[#000000] font-normal leading-[150%]" style={{ fontFamily: "'Playfair Display', serif" }}>
                   Kasavu Sarees
                 </h4>
               </div>
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </section>
 
       {/* 2. Tribute Section */}
-      <section className="py-12 md:py-16 px-4 bg-linear-to-b from-[#f5f0e0] to-[#fdfcf7] text-center">
-        <div className="max-w-3xl mx-auto">
-          {/* Dress/saree line icon */}
-          <div className="mb-4 flex justify-center">
-            <img
-              src={sareeLogo}
-              alt="SSK Handlooms"
-              className="w-20 h-20 md:w-24 md:h-24 object-contain opacity-70"
+      <section 
+        className="relative flex flex-col items-center pt-[40px] pb-[80px] px-4 overflow-hidden w-full"
+        style={{ background: 'linear-gradient(360deg, #FFFEFA 0%, #F7F4E4 100%)' }}
+      >
+        {/* Top Image */}
+        <div className="mb-[16px]">
+          <img
+            src={sareeLogo}
+            alt="SSK Handlooms"
+            className="w-[136px] h-[116px] object-contain"
+            loading="lazy" decoding="async"
+          />
+        </div>
+
+        {/* Content Container */}
+        <div className="flex flex-col items-center w-full max-w-[896px] gap-[40px]">
+          
+          {/* Top Divider */}
+          <div className="relative flex justify-center items-center w-full">
+            <div 
+              className="absolute inset-x-0 h-[1px]" 
+              style={{ background: 'linear-gradient(90deg, rgba(233, 195, 73, 0) 0%, #E9C349 50%, rgba(233, 195, 73, 0) 100%)' }}
             />
+            <div className="relative flex justify-center items-center w-[30px] h-[15px] bg-[#FDFAE9]">
+              <div className="w-[5.5px] h-[5.5px] bg-[#735C00] rotate-45" />
+            </div>
           </div>
 
-          {/* Divider with center dot */}
-          <div className="flex items-center justify-center gap-3 mb-8">
-            <div className="w-24 md:w-32 h-[1px] bg-linear-to-r from-transparent to-brand-gold/40" />
-            <div className="w-1.5 h-1.5 bg-brand-gold rounded-full rotate-45" />
-            <div className="w-24 md:w-32 h-[1px] bg-linear-to-l from-transparent to-brand-gold/40" />
+          {/* Blockquote */}
+          <div className="px-[26px] max-w-[810px]">
+            <h3 
+              className="text-[#462C00] italic font-medium text-[28px] md:text-[44px] leading-[150%] text-center"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              “Every thread tells a story of a thousand years, woven with the gold of our ancestors.”
+            </h3>
           </div>
 
-          {/* Quote */}
-          <Heading
-            level={3}
-            className="text-[#4a3b1f] mb-6 italic font-normal text-3xl md:text-4xl leading-[1.35] max-w-2xl mx-auto"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            "Every thread tells a story of a thousand years, woven with the gold of our ancestors."
-          </Heading>
-
-          {/* Subheading */}
-          <h3 className="font-serif text-[#2c2214] text-2xl md:text-3xl mb-6">
-            The Soul of Kerala
-          </h3>
-
-          {/* Body copy */}
-          <p className="text-[#4a3b1f]/70 text-sm md:text-base leading-relaxed font-light max-w-xl mx-auto mb-8">
-            At SSK Handlooms, we believe that heritage shouldn't be a luxury hidden in
-            antique chests. It should be lived. Our direct-to-consumer mission bypasses
-            the labyrinth of middlemen, ensuring that the true value of each weave goes
-            back to the artisan, and the true authenticity of the fabric reaches your
-            doorstep.
-          </p>
-
-          {/* Bottom divider with center dot */}
-          <div className="flex items-center justify-center gap-3">
-            <div className="w-24 md:w-32 h-[1px] bg-linear-to-r from-transparent to-brand-gold/40" />
-            <div className="w-1.5 h-1.5 bg-brand-gold rounded-full rotate-45" />
-            <div className="w-24 md:w-32 h-[1px] bg-linear-to-l from-transparent to-brand-gold/40" />
+          {/* Text Container */}
+          <div className="flex flex-col items-center gap-[24px] max-w-[672px]">
+            <h2 
+              className="text-[#1C1C13] font-medium text-[24px] md:text-[32px] leading-[40px] text-center"
+              style={{ fontFamily: "'Playfair Display', serif" }}
+            >
+              The Soul of Kerala
+            </h2>
+            <p className="text-[#534654] font-sans font-normal text-[16px] md:text-[20px] leading-[150%] text-center">
+              At SSK Handlooms, we believe that heritage shouldn't be a luxury hidden in antique chests. It should be lived. Our direct-to-consumer mission bypasses the labyrinth of middlemen, ensuring that the true value of each weave goes back to the artisan, and the true authenticity of the fabric reaches your doorstep.
+            </p>
           </div>
+
+          {/* Bottom Divider */}
+          <div className="relative flex justify-center items-center w-full">
+            <div 
+              className="absolute inset-x-0 h-[1px]" 
+              style={{ background: 'linear-gradient(90deg, rgba(233, 195, 73, 0) 0%, #E9C349 50%, rgba(233, 195, 73, 0) 100%)' }}
+            />
+            <div className="relative flex justify-center items-center w-[30px] h-[15px] bg-[#FDFAE9]">
+              <div className="w-[5.5px] h-[5.5px] bg-[#735C00] rotate-45" />
+            </div>
+          </div>
+
         </div>
       </section>
 
       {/* 3. Signature Weaves */}
-      <section className="py-12 md:py-16 px-4 bg-[#ede9e0]">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="text-brand-gold text-xs tracking-[0.3em] uppercase mb-3 font-medium">ESTABLISHED 2014</div>
-          <h2 className="font-serif text-3xl md:text-5xl text-[#2c2214] leading-tight mb-2">
-            Our Signature Weaves,<br />
-            Curated <span className="italic font-normal">For Every Generation</span>
-          </h2>
-
-          <div className="flex items-center justify-center space-x-3 my-5">
-            <div className="h-[1px] w-16 bg-brand-gold/40"></div>
-            <div className="w-1.5 h-1.5 rotate-45 bg-brand-gold"></div>
-            <div className="h-[1px] w-16 bg-brand-gold/40"></div>
+      <section className="relative flex flex-col items-center pt-[80px] pb-[100px] px-4 bg-[#EDECE3] overflow-hidden w-full">
+        <div className="flex flex-col items-center w-full max-w-[1200px] z-10 relative">
+          
+          {/* Established */}
+          <div className="text-[#735C00] font-sans font-normal text-[14px] leading-[150%] tracking-[4.8px] uppercase mb-[20px] text-center mt-[24px]">
+            ESTABLISHED 2014
           </div>
 
-          <p className="text-[#2c2214]/70 text-sm md:text-base font-light max-w-xl mx-auto mb-10">
-            Authentic Kerala handloom collections for men, women and kids.
-            Crafted with tradition, woven with care.
+          {/* Heading */}
+          <h2 
+            className="text-[#43252F] font-medium text-[36px] md:text-[54px] leading-[120%] text-center max-w-[758px] mb-[40px]"
+            style={{ fontFamily: "'Playfair Display', serif" }}
+          >
+            Our Signature Weaves, Curated <span className="italic font-normal">For Every Generation</span>
+          </h2>
+
+          {/* Divider */}
+          <div className="relative flex justify-center items-center w-full max-w-[896px] mb-[32px]">
+            <div 
+              className="absolute inset-x-0 h-[1px]" 
+              style={{ background: 'linear-gradient(90deg, rgba(233, 195, 73, 0) 0%, #E9C349 50%, rgba(233, 195, 73, 0) 100%)' }}
+            />
+            <div className="relative flex justify-center items-center w-[30px] h-[15px] bg-[#FDFAE9]">
+              <div className="w-[5.5px] h-[5.5px] bg-[#735C00] rotate-45" />
+            </div>
+          </div>
+
+          {/* Subtext */}
+          <p className="text-[#534654] font-sans font-normal text-[16px] md:text-[20px] leading-[150%] text-center max-w-[596px] mb-[64px]">
+            Authentic Kerala handloom collections for men, women and kids. Crafted with tradition, woven with care.
           </p>
 
-          <div className="flex flex-col space-y-6 mb-10">
+          {/* Collections List */}
+          <div className="flex flex-col items-center w-full gap-[40px] mb-[80px]">
+            
             {/* Women's Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-white rounded-[2rem] p-4 md:p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-md transition-shadow relative overflow-visible"
-            >
-              <div className="w-full md:w-56 h-36 rounded-2xl overflow-hidden shrink-0 bg-white p-1.5 shadow-sm border border-black/5 flex items-center justify-center">
-                <img src={womensHandloomImg} alt="Women's Folded Saree" className="w-full h-full object-cover rounded-xl" />
+            <div className="w-full max-w-[1000px] h-auto lg:h-[178px] bg-[#FBFBF8] border-[4px] border-[#FFFFFF] rounded-[40px] flex flex-col lg:flex-row items-center justify-between p-6 lg:p-0 lg:px-[32px] shadow-sm relative overflow-visible">
+              {/* Left Image container */}
+              <div className="w-[235px] h-[116px] bg-[#FFFFFF] rounded-[16px] p-[8px] flex-shrink-0 mb-4 lg:mb-0 shadow-xs">
+                <div className="w-[219px] h-[100px] bg-gray-100 rounded-[12px] overflow-hidden relative">
+                  <img src={Image6} className="absolute w-full h-full object-cover scale-110 -rotate-3" alt="Women" loading="lazy" decoding="async" />
+                </div>
               </div>
-
-              <div className="flex-1 text-center px-2 md:px-6">
-                <h3 className="font-serif text-[#2c2214] text-xl md:text-2xl mb-2">Women&apos;s Handloom Collections</h3>
-                <p className="text-xs md:text-sm text-[#2c2214]/60 font-light leading-relaxed max-w-md mx-auto">
+              
+              {/* Center Text */}
+              <div className="flex flex-col items-center flex-1 px-4 text-center z-10">
+                <h3 className="text-[#231226] font-medium text-[20px] lg:text-[24px] leading-[120%] mb-[12px]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Women’s Handloom Collections
+                </h3>
+                <p className="text-[#1A0D1C] font-normal text-[14px] lg:text-[16px] leading-[150%] max-w-[441px] font-sans">
                   Timeless sarees, set mundu, pavada, dhavani sets, churidhar, tops and dupattas - woven for every celebration
                 </p>
               </div>
 
-              {/* Polaroid stack wrapper — pulled up so it breaks out of the card's top edge */}
-              <div className="w-full md:w-56 h-36 relative flex items-center justify-center shrink-0 my-2 md:my-0 md:-mt-16 overflow-visible">
-                {/* Back polaroid 1 */}
-                <div className="absolute w-32 md:w-40 bg-white p-1.5 pb-6 rounded-2xl shadow-md border border-gray-100 rotate-[10deg] translate-x-6 -translate-y-2">
-                  <div className="w-full h-24 bg-gray-100 rounded-xl overflow-hidden">
-                    <img src={womensHandloomImg} alt="Women's Collection" className="w-full h-full object-cover" />
-                  </div>
-                </div>
+              {/* Right Placeholder to maintain centering */}
+              <div className="hidden lg:block w-[235px] flex-shrink-0" />
 
-                {/* Back polaroid 2 */}
-                <div className="absolute w-32 md:w-40 bg-white p-1.5 pb-6 rounded-2xl shadow-md border border-gray-100 -rotate-[8deg] -translate-x-6 -translate-y-3">
-                  <div className="w-full h-24 bg-gray-100 rounded-xl overflow-hidden">
-                    <img src={kasavuImg} alt="Kasavu Saree" className="w-full h-full object-cover" />
+              {/* Right Decorative Polaroid Stack (Replaces right image) */}
+              <div className="hidden xl:block absolute right-[-10px] top-[-70px] z-50 pointer-events-none origin-center scale-[1.05]">
+                <div className="relative w-[238px] h-[236px]">
+                  {/* Frame 41 */}
+                  <div className="absolute top-0 left-0 w-[238px] h-[236px] bg-[#FFFFFF] rounded-[20px] rotate-[14.65deg] flex justify-center items-center shadow-md">
+                    <div className="w-[230px] h-[180px] bg-gray-100 rounded-[16px] overflow-hidden -mt-[14px]">
+                      <img src={kasavuImg} className="w-full h-full object-cover" alt="" loading="lazy" decoding="async" />
+                    </div>
                   </div>
-                </div>
-
-                {/* Front polaroid */}
-                <div className="absolute z-10 w-40 md:w-48 bg-white p-2 pb-4 rounded-2xl shadow-xl border border-gray-100 rotate-[2deg] -translate-y-4">
-                  <div className="w-full h-28 bg-gray-100 rounded-xl overflow-hidden mb-1.5">
-                    <img src={kasavuImg} alt="Kasavu Saree" className="w-full h-full object-cover" />
+                  
+                  {/* Frame 40 */}
+                  <div className="absolute top-[9.55px] left-[0.27px] w-[238px] h-[236px] bg-[#FFFFFF] rounded-[20px] rotate-[8.28deg] flex justify-center items-center shadow-lg">
+                    <div className="w-[230px] h-[180px] bg-gray-100 rounded-[16px] overflow-hidden -mt-[14px]">
+                      <img src={kasavuImg} className="w-full h-full object-cover" alt="" loading="lazy" decoding="async" />
+                    </div>
                   </div>
-                  <span className="text-[11px] font-serif text-[#2c2214] block text-left pl-1">Kasavu Sarees</span>
+                  
+                  {/* Frame 12 */}
+                  <div className="absolute top-[11.68px] left-[-8.07px] w-[238px] h-[236px] bg-[#FFFFFF] rounded-[20px] rotate-[4.63deg] shadow-xl flex flex-col items-center justify-start pt-[4.31px] border border-gray-100/50">
+                    <div className="w-[230px] h-[180px] bg-gray-100 rounded-[16px] overflow-hidden mb-[6px]">
+                      <img src={kasavuImg} className="w-full h-full object-cover" alt="" loading="lazy" decoding="async" />
+                    </div>
+                    <div className="w-full px-[14px] text-left">
+                      <span className="text-[#000000] font-normal text-[16px] leading-[150%]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                        Kasavu Sarees
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Men's Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-white rounded-[2rem] p-4 md:p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-md transition-shadow"
-            >
-              <div className="w-full md:w-56 h-36 rounded-2xl overflow-hidden shrink-0 bg-white p-1.5 shadow-sm border border-black/5 flex items-center justify-center">
-                <img src={womensHandloomImg} alt="Men's Folded Dhoti" className="w-full h-full object-cover rounded-xl" />
+            <div className="w-full max-w-[1000px] h-auto lg:h-[178px] bg-[#FBFBF8] border-[4px] border-[#FFFFFF] rounded-[40px] flex flex-col lg:flex-row items-center justify-between p-6 lg:p-0 lg:px-[32px] shadow-sm relative">
+              <div className="w-[235px] h-[116px] bg-[#FFFFFF] rounded-[16px] p-[8px] flex-shrink-0 mb-4 lg:mb-0 shadow-xs">
+                <div className="w-[219px] h-[100px] bg-gray-100 rounded-[12px] overflow-hidden relative">
+                  <img src={Image6} className="absolute w-full h-full object-cover scale-110 -rotate-3" alt="Men Fabric" loading="lazy" decoding="async" />
+                </div>
               </div>
-              <div className="flex-1 text-center px-2 md:px-6">
-                <h3 className="font-serif text-[#2c2214] text-xl md:text-2xl mb-2">Men&apos;s Ethnic Collections</h3>
-                <p className="text-xs md:text-sm text-[#2c2214]/60 font-light leading-relaxed max-w-md mx-auto">
+              
+              <div className="flex flex-col items-center flex-1 px-4 text-center z-10">
+                <h3 className="text-[#231226] font-medium text-[20px] lg:text-[24px] leading-[120%] mb-[12px]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Men’s Ethnic Collections
+                </h3>
+                <p className="text-[#1A0D1C] font-normal text-[14px] lg:text-[16px] leading-[150%] max-w-[441px] font-sans">
                   From classic mundu and dhotis to kurtas and festive wear - crafted for tradition, designed for distinction.
                 </p>
               </div>
-              <div className="w-full md:w-56 h-36 rounded-2xl overflow-hidden shrink-0 bg-white p-1.5 shadow-sm border border-black/5 flex items-center justify-center">
-                <img src={image23} alt="Men's Collection" className="w-full h-full object-cover object-top rounded-xl" />
+
+              <div className="w-[235px] h-[116px] bg-[#FFFFFF] rounded-[16px] p-[8px] flex-shrink-0 mt-4 lg:mt-0 shadow-xs">
+                <div className="w-[219px] h-[100px] bg-gray-100 rounded-[12px] overflow-hidden relative">
+                  <img src={Image19} className="absolute w-full h-full object-cover object-top" alt="Men" loading="lazy" decoding="async" />
+                </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Kid's Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="bg-white rounded-[2rem] p-4 md:p-6 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-md transition-shadow"
-            >
-              <div className="w-full md:w-56 h-36 rounded-2xl overflow-hidden shrink-0 bg-white p-1.5 shadow-sm border border-black/5 flex items-center justify-center">
-                <img src={kidsTraditionalImg} alt="Kid's Folded Dress" className="w-full h-full object-cover rounded-xl" />
+            <div className="w-full max-w-[1000px] h-auto lg:h-[178px] bg-[#FBFBF8] border-[4px] border-[#FFFFFF] rounded-[40px] flex flex-col lg:flex-row items-center justify-between p-6 lg:p-0 lg:px-[32px] shadow-sm relative">
+              <div className="w-[235px] h-[116px] bg-[#FFFFFF] rounded-[16px] p-[8px] flex-shrink-0 mb-4 lg:mb-0 shadow-xs">
+                <div className="w-[219px] h-[100px] bg-gray-100 rounded-[12px] overflow-hidden relative">
+                  <img src={image22} className="absolute w-full h-full object-cover object-top" alt="Kids Fabric" loading="lazy" decoding="async" />
+                </div>
               </div>
-              <div className="flex-1 text-center px-2 md:px-6">
-                <h3 className="font-serif text-[#2c2214] text-xl md:text-2xl mb-2">Kid&apos;s Traditional Collections</h3>
-                <p className="text-xs md:text-sm text-[#2c2214]/60 font-light leading-relaxed max-w-md mx-auto">
+              
+              <div className="flex flex-col items-center flex-1 px-4 text-center z-10">
+                <h3 className="text-[#231226] font-medium text-[20px] lg:text-[24px] leading-[120%] mb-[12px]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Kid’s Traditional Collections
+                </h3>
+                <p className="text-[#1A0D1C] font-normal text-[14px] lg:text-[16px] leading-[150%] max-w-[441px] font-sans">
                   Adorable ethnic wear for little ones from kasavu collections to festive outfits, made for memories that last a lifetime.
                 </p>
               </div>
-              <div className="w-full md:w-56 h-36 rounded-2xl overflow-hidden shrink-0 bg-white p-1.5 shadow-sm border border-black/5 flex items-center justify-center">
-                <img src={image22} alt="Kid's Collection" className="w-full h-full object-cover rounded-xl" />
+
+              <div className="w-[235px] h-[116px] bg-[#FFFFFF] rounded-[16px] p-[8px] flex-shrink-0 mt-4 lg:mt-0 shadow-xs">
+                <div className="w-[219px] h-[100px] bg-gray-100 rounded-[12px] overflow-hidden relative">
+                  <img src={kidsTraditionalImg} className="absolute w-full h-full object-cover object-top scale-[1.3] translate-y-3" alt="Kids" loading="lazy" decoding="async" />
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
 
-          <div className="mt-6 text-center">
-            <a href="/collections" className="inline-block px-8 py-3.5 border border-brand-gold text-brand-gold text-xs tracking-[0.2em] font-medium uppercase hover:bg-brand-gold hover:text-white transition-colors rounded-sm">
-              DISCOVER THE WEAVE
+          {/* Button */}
+          <div className="flex justify-center w-full">
+            <a href="/collections" className="flex justify-center items-center w-[272px] h-[60px] border border-[#735C00] hover:bg-[#735C00] transition-colors group bg-transparent">
+              <span className="text-[#735C00] group-hover:text-[#EDECE3] text-[16px] font-medium leading-[160%] tracking-[1px] uppercase font-sans">
+                DISCOVER THE WEAVE
+              </span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* 4. Circular Collections Layout */}
+      {/* 4. Circular Collections Layout with Section 5 Reveal */}
+      <React.Suspense fallback={<div className="w-full h-screen bg-[#fdfcf7]" />}>
+        <CircularImageReveal images={circleImages}>
+          {/* 5. Full Width Banner - Traditions (Revealed from Center) */}
+          <div className="relative w-full h-full bg-[#FFFFFF]">
+            <div className="absolute inset-0 w-full h-full">
+              <img
+                src={traditionsImg}
+                alt="Traditional Kerala"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+                loading="lazy" decoding="async"
+              />
+            </div>
+            
+            {/* Precise Figma Overlay */}
+            <div 
+              className="absolute inset-0 pointer-events-none" 
+              style={{ background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))' }} 
+            />
 
-      <section className="py-12 md:py-16 overflow-hidden bg-[#fdfcf7] flex flex-col items-center justify-center relative min-h-[680px] md:min-h-[780px]">
-        <div
-          className="circle-wrap relative w-[500px] h-[500px] md:w-[880px] md:h-[880px] flex items-center justify-center"
-          style={{ "--radius": "210px" } as React.CSSProperties}
-        >
-          <style>{`
-      @media (min-width: 768px) {
-        .circle-wrap { --radius: 380px; }
-      }
-    `}</style>
+            {/* Top Left Heading */}
+            <div className="absolute top-[80px] lg:top-[120px] left-[40px] lg:left-[80px] z-10">
+              <h2 className="text-[#FFFFFF] text-[40px] md:text-[60px] lg:text-[72px] font-normal leading-[120%] tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Some Traditions Are<br />
+                Worn. Others Are <span className="italic">Lived.</span>
+              </h2>
+            </div>
 
-          <Heading
-            level={3}
-            className="text-[#2c2214] max-w-[240px] md:max-w-[360px] text-center z-10 text-2xl md:text-4xl font-normal"
-          >
-            A Collection for<br />
-            <span className="italic">Everyone</span>
-          </Heading>
-
-          {circleImages.map((src, i) => {
-            const total = circleImages.length; // 20
-            const angle = i * (360 / total);
-
-            return (
-              <div
-                key={i}
-                className="absolute top-1/2 left-1/2 w-9 h-11 md:w-[56px] md:h-[68px] bg-white shadow-md overflow-hidden rounded-xl md:rounded-2xl -mt-[22px] -ml-[18px] md:-mt-[34px] md:-ml-[28px] transition-transform duration-300 hover:scale-105"
-                style={{
-                  transform: `rotate(${angle}deg) translateY(calc(-1 * var(--radius)))`,
-                }}
+            {/* Bottom Right Quote and Button */}
+            <div className="absolute bottom-[80px] lg:bottom-[80px] right-[40px] lg:right-[80px] z-10 w-full max-w-[550px]">
+              <p className="text-[#FFFFFF] font-normal text-[16px] lg:text-[20px] leading-[160%] mb-[32px] font-sans opacity-95">
+                “Born from the rich cultural roots of Kerala, SSK Handlooms is more than a brand - It is a commitment to preserve the art of handloom weaving and keep our traditions alive. From the looms of skilled artisans to the celebrations of today, we bring you authenticity you can feel.”
+              </p>
+              <a
+                href="/story"
+                className="flex justify-center items-center w-[272px] h-[60px] border border-[#FFFFFF] bg-transparent text-[#FFFFFF] text-[16px] font-medium tracking-[1px] uppercase hover:bg-white hover:text-[#1A0D1C] transition-colors font-sans pointer-events-auto"
               >
-                <img src={src} alt="pattern swatch" className="w-full h-full object-cover" />
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* 5. Full Width Banner - Traditions */}
-      <section className="relative w-full min-h-[520px] md:min-h-[620px] flex flex-col justify-between py-12 md:py-16 px-6 md:px-16 lg:px-24 bg-[#1a1410] overflow-hidden">
-        <img
-          src={traditionsImg}
-          alt="Traditional Kerala"
-          className="absolute inset-0 w-full h-full object-cover opacity-100 object-center"
-        />
-        <div className="absolute inset-0 bg-linear-to-r from-black/50 via-black/10 to-black/50" />
-        <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-black/30" />
-
-        {/* Top Left Heading */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto">
-          <h2 className="font-serif text-white text-4xl md:text-6xl lg:text-7xl font-normal leading-[1.15] max-w-4xl tracking-tight">
-            Some Traditions Are<br />
-            Worn. Others Are <span className="italic font-normal">Lived.</span>
-          </h2>
-        </div>
-
-        {/* Bottom Right Quote and Button */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto flex justify-end mt-8 md:mt-12">
-          <div className="max-w-2xl text-left">
-            <p className="text-white/90 font-light text-base md:text-xl leading-relaxed mb-8 font-sans">
-              &ldquo;Born from the rich cultural roots of Kerala, SSK Handlooms is more than a brand - It is a commitment to preserve the art of handloom weaving and keep our traditions alive. From the looms of skilled artisans to the celebrations of today, we bring you authenticity you can feel.&rdquo;
-            </p>
-            <a
-              href="/story"
-              className="inline-block px-8 py-3.5 border border-white/70 text-white text-xs tracking-[0.25em] font-medium uppercase hover:bg-white hover:text-[#1a1410] transition-colors bg-black/20 backdrop-blur-xs"
-            >
-              KNOW OUR STORY
-            </a>
+                KNOW OUR STORY
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
+        </CircularImageReveal>
+      </React.Suspense>
 
-      {/* 6. Legacy & Heritage Weave Section */}
       <section className="w-full bg-[#fdfcf7] py-14 md:py-20 px-6 overflow-hidden">
         <div className="max-w-5xl mx-auto flex flex-col items-center">
-          {/* Top Quote */}
           <h2 className="font-serif italic text-center text-[#2c2214] text-3xl md:text-5xl lg:text-[54px] font-normal leading-[1.35] max-w-4xl mb-12 md:mb-16">
             &ldquo;Every weave carries a legacy. Every<br />
             thread connects generations.&rdquo;
           </h2>
 
-          {/* Center Image with Decorative L-Corner Brackets */}
+
           <div className="relative w-full max-w-[420px] md:max-w-[520px] aspect-square mx-auto">
-            {/* Top-Left Bracket */}
             <div className="absolute -top-6 -left-6 md:-top-8 md:-left-8 w-28 md:w-36 h-28 md:h-36 border-t border-l border-[#d6c5a3] pointer-events-none" />
 
-            {/* Main Image */}
             <div className="w-full h-full overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.18)] rounded-xs md:rounded-sm">
               <img
                 src={image22Asset}
@@ -395,7 +436,6 @@ export const Home: React.FC = () => {
               />
             </div>
 
-            {/* Bottom-Right Bracket */}
             <div className="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 w-28 md:w-36 h-28 md:h-36 border-b border-r border-[#d6c5a3] pointer-events-none" />
           </div>
         </div>

@@ -1,10 +1,10 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
-import image30Asset from "../assets/image30.png"
-import image31Asset from "../assets/image31.png"
-import image32Asset from "../assets/image32.png"
-import image33Asset from "../assets/image33.png"
-import image34Asset from "../assets/image34.png"
+import image30Asset from "../assets/image30.webp"
+import image31Asset from "../assets/image31.webp"
+import image32Asset from "../assets/image32.webp"
+import image33Asset from "../assets/image33.webp"
+import image34Asset from "../assets/image34.webp"
 
 export const Collections: React.FC = () => {
   const [activeTab, setActiveTab] = useState('All Categories')
@@ -158,7 +158,7 @@ export const Collections: React.FC = () => {
                   {item.title}
                 </h4>
 
-                {/* Row of square fabric thumbnails + count badge matching input_file_17.png */}
+                {/* Row of square fabric thumbnails + count badge matching input_file_17.webp */}
                 <div className="flex items-center gap-1.5 mt-2.5">
                   {[image31Asset, image32Asset, image33Asset, image34Asset].map((swatchImg, idx) => (
                     <div
