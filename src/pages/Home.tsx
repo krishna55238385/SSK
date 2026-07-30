@@ -325,7 +325,7 @@ export const Home: React.FC = () => {
   return (
     <div className="w-full bg-brand-light text-brand-text font-sans">
 
-      <section className="box-border relative w-full min-h-[669px] h-screen bg-white border border-black overflow-hidden">
+      <section className="box-border relative w-full min-h-[560px] h-screen bg-white overflow-hidden">
         <img
           src={heroImg}
           alt="SSK Handlooms Hero"
@@ -335,29 +335,34 @@ export const Home: React.FC = () => {
         />
         <div className="absolute inset-0" />
 
-        {/* ESTABLISHED 2008 */}
-        <div className="absolute w-max h-[24px] left-[40px] top-[279px] font-satoshi font-normal text-[14px] leading-[24px] flex items-center tracking-[4.8px] uppercase text-white whitespace-nowrap">
-          ESTABLISHED 2008
+        {/* ── Mobile/tablet: flex column layout. Desktop lg+: absolute Figma pixel positions ── */}
+        <div className="absolute inset-0 flex flex-col justify-center lg:block px-5 sm:px-8 md:px-10 lg:px-0 pt-[90px] sm:pt-[100px] lg:pt-0">
+
+          {/* ESTABLISHED 2008 */}
+          <div className="font-satoshi font-normal uppercase text-white whitespace-nowrap text-[11px] sm:text-[13px] lg:text-[14px] leading-[24px] tracking-[3px] sm:tracking-[4px] lg:tracking-[4.8px] mb-2 sm:mb-3 lg:mb-0 lg:absolute lg:w-max lg:h-[24px] lg:left-[40px] lg:top-[279px]">
+            ESTABLISHED 2008
+          </div>
+
+          {/* Where Every Tread Tells A Story */}
+          <h1 className="font-serif font-medium text-white leading-[120%] m-0 text-[28px] sm:text-[40px] md:text-[52px] lg:text-[64px] mb-3 sm:mb-5 lg:mb-0 lg:absolute lg:w-[582px] lg:h-[154px] lg:left-[40px] lg:top-[307px]">
+            Where Every Tread<br />Tells A Story
+          </h1>
+
+          {/* Description — hidden on very small mobile, visible sm+ */}
+          <p className="hidden sm:block font-satoshi font-normal text-[#EEEEEE] leading-[150%] m-0 text-[14px] md:text-[18px] lg:text-[24px] max-w-[90%] sm:max-w-[420px] md:max-w-[520px] lg:max-w-none mb-5 sm:mb-6 lg:mb-0 lg:absolute lg:w-[570px] lg:h-[108px] lg:left-[40px] lg:top-[477px] lg:flex lg:items-center">
+            Authentic Kerala Handlooms for the Modern Soul. Weaving the golden threads of tradition into the fabric of contemporary lifestyle.
+          </p>
+
+          {/* Button */}
+          <button className="group box-border flex flex-row justify-center items-center px-[28px] sm:px-[36px] lg:px-[40px] py-[12px] sm:py-[14px] lg:py-[16px] w-[200px] sm:w-[240px] lg:w-[278px] h-[44px] sm:h-[50px] lg:h-[58px] border border-[#E3C89B] bg-transparent hover:bg-[#E3C89B] transition-all duration-300 cursor-pointer lg:absolute lg:left-[40px] lg:top-[609px]">
+            <span className="font-satoshi font-normal text-[12px] sm:text-[14px] lg:text-[16px] leading-[24px] flex items-center justify-center tracking-[1.6px] uppercase text-[#E3C89B] group-hover:text-[#2c2214] transition-all duration-300 whitespace-nowrap">
+              DISCOVER THE WEAVE
+            </span>
+          </button>
         </div>
 
-        {/* Where Every Tread Tells A Story */}
-        <h1 className="absolute w-[582px] h-[154px] left-[40px] top-[307px] font-serif font-medium text-[64px] leading-[120%] text-white m-0">
-          Where Every Tread<br />Tells A Story
-        </h1>
-
-        {/* Description */}
-        <p className="absolute w-[570px] h-[108px] left-[40px] top-[477px] font-satoshi font-normal text-[24px] leading-[150%] flex items-center text-[#EEEEEE] m-0">
-          Authentic Kerala Handlooms for the Modern Soul. Weaving the golden threads of tradition into the fabric of contemporary lifestyle.
-        </p>
-
-        {/* Button */}
-        <button className="group box-border flex flex-row justify-center items-center px-[40px] py-[16px] absolute w-[278px] h-[58px] left-[40px] top-[609px] border border-[#E3C89B] bg-transparent hover:bg-[#E3C89B] transition-all duration-300 cursor-pointer">
-          <span className="w-full h-[24px] font-satoshi font-normal text-[16px] leading-[24px] flex items-center justify-center tracking-[1.6px] uppercase text-[#E3C89B] group-hover:text-[#2c2214] transition-all duration-300 whitespace-nowrap">
-            DISCOVER THE WEAVE
-          </span>
-        </button>
-
-        {/* Polaroid Cards Stack */}
+        {/* Polaroid Cards Stack — desktop only, hidden on mobile/tablet */}
+        <div className="hidden lg:block">
         {cardIds.map((id) => {
           const slot = getSlot(id);
           const cfg = stackConfig[slot];
@@ -433,12 +438,13 @@ export const Home: React.FC = () => {
             </motion.div>
           );
         })}
+        </div>
       </section>
 
       {/* 2. Tribute Section */}
       <section
         ref={tributeSectionRef}
-        className="relative flex flex-col items-center justify-center min-h-screen w-full px-4 overflow-hidden"
+        className="relative flex flex-col items-center justify-start sm:justify-center min-h-screen w-full px-4 overflow-hidden pt-[150px] sm:pt-0 pb-[24px] sm:pb-0"
         style={{ background: 'linear-gradient(360deg, #FFFEFA 0%, #F7F4E4 100%)' }}
       >
         {/* Top Image */}
@@ -830,14 +836,14 @@ export const Home: React.FC = () => {
           </div>
 
           {/* Cards Stacking Area */}
-          <div className="relative w-full max-w-[920px] h-[400px] flex items-center justify-center flex-grow">
+          <div className="relative w-full max-w-[920px] h-[640px] sm:h-[520px] md:h-[400px] flex items-center justify-center flex-grow">
             
             {/* Testimonial Card 1 */}
             <div
               ref={card1Ref}
               className="absolute w-full bg-[#FBFBF8] border-[4px] border-white rounded-[32px] p-6 lg:p-8 flex flex-col md:flex-row gap-8 items-center max-w-[920px] md:h-[400px] box-border"
             >
-              <div className="w-full md:w-[350px] h-[280px] md:h-[350px] shrink-0 overflow-hidden rounded-[24px] bg-white">
+              <div className="w-full md:w-[350px] h-[180px] sm:h-[230px] md:h-[350px] shrink-0 overflow-hidden rounded-[18px] sm:rounded-[22px] md:rounded-[24px] bg-white">
                 <img
                   src={image29Asset}
                   alt="Malabar Silks Boutique"
@@ -886,7 +892,7 @@ export const Home: React.FC = () => {
               className="absolute w-full bg-[#FBFBF8] border-[4px] border-white rounded-[32px] p-6 lg:p-8 flex flex-col md:flex-row gap-8 items-center max-w-[920px] md:h-[400px] box-border"
               style={{ opacity: 0 }}
             >
-              <div className="w-full md:w-[350px] h-[280px] md:h-[350px] shrink-0 overflow-hidden rounded-[24px] bg-white">
+              <div className="w-full md:w-[350px] h-[180px] sm:h-[230px] md:h-[350px] shrink-0 overflow-hidden rounded-[18px] sm:rounded-[22px] md:rounded-[24px] bg-white">
                 <img
                   src={image30Asset}
                   alt="Kerala Elegance Boutique"
@@ -935,7 +941,7 @@ export const Home: React.FC = () => {
               className="absolute w-full bg-[#FBFBF8] border-[4px] border-white rounded-[32px] p-6 lg:p-8 flex flex-col md:flex-row gap-8 items-center max-w-[920px] md:h-[400px] box-border"
               style={{ opacity: 0 }}
             >
-              <div className="w-full md:w-[350px] h-[280px] md:h-[350px] shrink-0 overflow-hidden rounded-[24px] bg-white">
+              <div className="w-full md:w-[350px] h-[180px] sm:h-[230px] md:h-[350px] shrink-0 overflow-hidden rounded-[18px] sm:rounded-[22px] md:rounded-[24px] bg-white">
                 <img
                   src={image31Asset}
                   alt="Southern Heritage"
@@ -983,7 +989,7 @@ export const Home: React.FC = () => {
           {/* Figma-Spec CTA Card: 920px width, 360px height, 6px border, shadow */}
           <div
             ref={ctaCardRef}
-            className="relative w-full max-w-[920px] rounded-[32px] border-[6px] border-white shadow-[0px_4px_34px_rgba(70,44,0,0.20)] p-8 md:p-12 text-center flex flex-col items-center justify-center overflow-hidden h-[360px] box-border mt-12 md:mt-16"
+            className="relative w-full max-w-[920px] rounded-[24px] sm:rounded-[28px] md:rounded-[32px] border-[4px] sm:border-[5px] md:border-[6px] border-white shadow-[0px_4px_34px_rgba(70,44,0,0.20)] p-6 sm:p-8 md:p-12 text-center flex flex-col items-center justify-center overflow-hidden h-auto min-h-[300px] md:min-h-[360px] box-border mt-10 sm:mt-12 md:mt-16"
             style={{
               background: "linear-gradient(180deg, #462C00 0%, #1F1911 100%)",
             }}
@@ -997,7 +1003,7 @@ export const Home: React.FC = () => {
             <p className="text-[#EEEEEE] font-normal text-sm md:text-[15px] leading-[150%] max-w-[551px] mx-auto mb-6 font-satoshi">
               From timeless kasavu classics to contemporary ethnic essentials, each piece is crafted to honor tradition while embracing modern elegance.
             </p>
-            <button className="w-full md:w-[300px] h-[52px] border border-white px-[32px] py-[12px] text-[15px] font-normal tracking-[1.6px] uppercase text-white hover:bg-white hover:text-[#1F1911] transition-colors duration-300 font-satoshi flex items-center justify-center cursor-pointer box-border">
+            <button className="w-full max-w-[300px] h-[48px] sm:h-[52px] border border-white px-[28px] sm:px-[32px] py-[12px] text-[13px] sm:text-[15px] font-normal tracking-[1.6px] uppercase text-white hover:bg-white hover:text-[#1F1911] transition-colors duration-300 font-satoshi flex items-center justify-center cursor-pointer box-border">
               DISCOVER THE COLLECTION
             </button>
           </div>
