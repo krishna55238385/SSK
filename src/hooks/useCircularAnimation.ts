@@ -65,16 +65,24 @@ export const useCircularAnimation = ({ imagesCount, centerRef }: UseCircularAnim
     // Initial positioning
     updatePositions();
 
-    const tl = gsap.to(proxy, {
-      progress: imagesCount + 6, // Extended progress for the center reveal
-      ease: "none",
+    const scrollDistance = window.innerHeight * 4;
+
+    const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: () => `+=${window.innerHeight * Math.max(2, (imagesCount + 6) * 0.3)}`, 
-        scrub: true,
+        end: () => `+=${scrollDistance}`,
+        scrub: 1.2,
         pin: true,
-      },
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+      }
+    });
+
+    tl.to(proxy, {
+      progress: imagesCount + 6,
+      duration: scrollDistance,
+      ease: "none",
       onUpdate: () => {
         updatePositions();
         
@@ -96,8 +104,30 @@ export const useCircularAnimation = ({ imagesCount, centerRef }: UseCircularAnim
       }
     });
 
+    // Refresh ScrollTrigger after all images in this container are loaded
+    const imgElements = containerRef.current.querySelectorAll('img');
+    let loadedCount = 0;
+    const checkAllLoaded = () => {
+      loadedCount++;
+      if (loadedCount === imgElements.length) {
+        ScrollTrigger.refresh();
+      }
+    };
+    imgElements.forEach((img) => {
+      if (img.complete) {
+        checkAllLoaded();
+      } else {
+        img.addEventListener('load', checkAllLoaded);
+        img.addEventListener('error', checkAllLoaded);
+      }
+    });
+
     return () => {
       window.removeEventListener('resize', updateRadius);
+      imgElements.forEach((img) => {
+        img.removeEventListener('load', checkAllLoaded);
+        img.removeEventListener('error', checkAllLoaded);
+      });
       if (tl.scrollTrigger) {
         tl.scrollTrigger.kill();
       }

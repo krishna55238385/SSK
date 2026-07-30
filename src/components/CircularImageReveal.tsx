@@ -8,24 +8,24 @@ interface CircularImageRevealProps {
 
 export const CircularImageReveal: React.FC<CircularImageRevealProps> = ({ images, children }) => {
   const centerRef = React.useRef<HTMLDivElement>(null);
-  const { containerRef, imagesRef } = useCircularAnimation({ 
+  const { containerRef, imagesRef } = useCircularAnimation({
     imagesCount: images.length,
     centerRef
   });
 
   return (
-    <section 
-      ref={containerRef as React.RefObject<HTMLElement>} 
+    <section
+      ref={containerRef as React.RefObject<HTMLElement>}
       className="relative w-full h-screen bg-[#fdfcf7] overflow-hidden flex items-center justify-center"
     >
       {/* Center Text */}
       <div className="absolute z-10 flex flex-col items-center justify-center text-center select-none pointer-events-none">
-        <h2 className="text-[#43252F] text-lg md:text-xl lg:text-2xl font-light tracking-widest uppercase mb-2 font-sans">
-          A Collection for
+        <h2
+          className="text-[#43252F] text-[32px] md:text-[44px] lg:text-[54px] font-medium leading-[120%] text-center"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          A Collection for <br/><span className="italic">Everyone</span>
         </h2>
-        <span className="text-[#43252F] text-[40px] md:text-[48px] lg:text-[54px] font-serif italic tracking-wider leading-[120%] font-medium" style={{ fontFamily: "'Playfair Display', serif" }}>
-          Everyone
-        </span>
       </div>
 
       {/* Images */}
@@ -46,13 +46,13 @@ export const CircularImageReveal: React.FC<CircularImageRevealProps> = ({ images
             object-cover 
             rounded-[12px] md:rounded-[16px]
             shadow-md
-            w-[48px] h-[60px] 
+            w-[50px] h-[60px] 
             md:w-[64px] md:h-[80px] 
             lg:w-[80px] lg:h-[100px]
             bg-white
             will-change-transform
           `}
-          style={{ 
+          style={{
             opacity: 0,
             transform: 'translate(-50%, -50%) scale(0.7)'
           }}
@@ -61,8 +61,8 @@ export const CircularImageReveal: React.FC<CircularImageRevealProps> = ({ images
 
       {/* The expanding center section */}
       {children && (
-        <div 
-          ref={centerRef} 
+        <div
+          ref={centerRef}
           className="absolute inset-0 w-full h-full z-30 flex items-center justify-center overflow-hidden will-change-transform"
           style={{ opacity: 0, clipPath: 'circle(0% at 50% 50%)' }}
         >
