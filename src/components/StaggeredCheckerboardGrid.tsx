@@ -12,6 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
 export const StaggeredCheckerboardGrid: React.FC = () => {
   const pinRef = useRef<HTMLDivElement>(null);
   
+  const [img1Loaded, setImg1Loaded] = React.useState(false);
+  const [img2Loaded, setImg2Loaded] = React.useState(false);
+  const [img3Loaded, setImg3Loaded] = React.useState(false);
+  const [img4Loaded, setImg4Loaded] = React.useState(false);
+  
   const card1Ref = useRef<HTMLDivElement>(null);
   const card2Ref = useRef<HTMLDivElement>(null);
   const card3Ref = useRef<HTMLDivElement>(null);
@@ -191,7 +196,10 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             ref={card1ImgRef}
             src={image23Asset}
             alt="Finest Yarns"
-            className="absolute inset-0 w-full h-full object-cover"
+            onLoad={() => setImg1Loaded(true)}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              img1Loaded ? "opacity-100" : "opacity-0"
+            }`}
           />
           <div className="absolute inset-0 bg-black/45" />
           <div
@@ -204,7 +212,7 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             <h3 className="font-serif text-3xl md:text-4xl lg:text-[44px] text-white font-normal leading-none">
               Finest Yarns
             </h3>
-            <p className="text-white/90 font-normal text-base md:text-lg lg:text-xl max-w-sm lg:max-w-md leading-relaxed">
+            <p className="text-white/90 font-normal text-base md:text-lg lg:text-xl max-w-sm lg:max-w-md leading-relaxed font-satoshi">
               Carefully selected for exceptional quality and comfort.
             </p>
           </div>
@@ -219,7 +227,10 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             ref={card2ImgRef}
             src={image24Asset}
             alt="Handloom Weaving"
-            className="absolute inset-0 w-full h-full object-cover"
+            onLoad={() => setImg2Loaded(true)}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              img2Loaded ? "opacity-100" : "opacity-0"
+            }`}
           />
           <div className="absolute inset-0 bg-black/45" />
           <div
@@ -232,7 +243,7 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             <h3 className="font-serif text-3xl md:text-4xl lg:text-[44px] text-white font-normal leading-none">
               Handloom Weaving
             </h3>
-            <p className="text-white/90 font-normal text-base md:text-lg lg:text-xl max-w-sm lg:max-w-md leading-relaxed">
+            <p className="text-white/90 font-normal text-base md:text-lg lg:text-xl max-w-sm lg:max-w-md leading-relaxed font-satoshi">
               Expertly woven by skilled artisans with generations of craftsmanship.
             </p>
           </div>
@@ -247,7 +258,10 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             ref={card3ImgRef}
             src={image25Asset}
             alt="Perfect Finishing"
-            className="absolute inset-0 w-full h-full object-cover"
+            onLoad={() => setImg3Loaded(true)}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              img3Loaded ? "opacity-100" : "opacity-0"
+            }`}
           />
           <div className="absolute inset-0 bg-black/45" />
           <div
@@ -260,7 +274,7 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             <h3 className="font-serif text-3xl md:text-4xl lg:text-[44px] text-white font-normal leading-none">
               Perfect Finishing
             </h3>
-            <p className="text-white/90 font-normal text-base md:text-lg lg:text-xl max-w-sm lg:max-w-md leading-relaxed">
+            <p className="text-white/90 font-normal text-base md:text-lg lg:text-xl max-w-sm lg:max-w-md leading-relaxed font-satoshi">
               Every detail thoughtfully refined for timeless elegance.
             </p>
           </div>
@@ -275,7 +289,10 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             ref={card4ImgRef}
             src={image26Asset}
             alt="Made for Moments"
-            className="absolute inset-0 w-full h-full object-cover"
+            onLoad={() => setImg4Loaded(true)}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              img4Loaded ? "opacity-100" : "opacity-0"
+            }`}
           />
           <div className="absolute inset-0 bg-black/45" />
           <div
@@ -288,7 +305,7 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             <h3 className="font-serif text-3xl md:text-4xl lg:text-[44px] text-white font-normal leading-none">
               Made for Moments
             </h3>
-            <p className="text-white/90 font-normal text-base md:text-lg lg:text-xl max-w-sm lg:max-w-md leading-relaxed">
+            <p className="text-white/90 font-normal text-base md:text-lg lg:text-xl max-w-sm lg:max-w-md leading-relaxed font-satoshi">
               Designed to celebrate life's most meaningful occasions.
             </p>
           </div>

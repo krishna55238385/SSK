@@ -75,6 +75,10 @@ export const Home: React.FC = () => {
     Image10, Image11, Image12, Image13, Image14, Image15, Image16, Image17, Image18, Image19, Image20
   ];
 
+  const [heroLoaded, setHeroLoaded] = React.useState(false);
+  const [traditionsLoaded, setTraditionsLoaded] = React.useState(false);
+  const [ceoLoaded, setCeoLoaded] = React.useState(false);
+
   const [activeIndex, setActiveIndex] = React.useState(0);
   const [isAnimatingOut, setIsAnimatingOut] = React.useState(false);
 
@@ -329,7 +333,10 @@ export const Home: React.FC = () => {
         <img
           src={heroImg}
           alt="SSK Handlooms Hero"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          onLoad={() => setHeroLoaded(true)}
+          className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
+            heroLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"
+          }`}
           fetchPriority="high"
           decoding="async"
         />
@@ -666,7 +673,10 @@ export const Home: React.FC = () => {
             <img
               src={traditionsImg}
               alt="Traditional Kerala"
-              className="absolute inset-0 w-full h-full object-cover object-center"
+              onLoad={() => setTraditionsLoaded(true)}
+              className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
+                traditionsLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"
+              }`}
               loading="lazy" decoding="async"
             />
           </div>
@@ -695,7 +705,7 @@ export const Home: React.FC = () => {
             </p>
             <a
               href="/story"
-              className="box-border flex justify-center items-center px-[28px] sm:px-[40px] py-[12px] sm:py-[16px] w-[200px] sm:w-[243px] h-[48px] sm:h-[58px] border border-[#FFFFFF] bg-transparent text-[#FFFFFF] text-[14px] sm:text-[16px] font-normal tracking-[1.6px] uppercase hover:bg-white hover:text-[#1A0D1C] transition-colors font-satoshi pointer-events-auto whitespace-nowrap"
+              className="box-border flex justify-center items-center px-[28px] sm:px-[40px] py-[12px] sm:py-[16px] w-[200px] sm:w-[243px] h-[48px] sm:h-[58px] border border-[#FFFFFF] bg-transparent text-[#FFFFFF] text-[14px] sm:text-[16px] font-normal tracking-[1.6px] uppercase hover:bg-white hover:text-[#1A0D1C] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-satoshi pointer-events-auto whitespace-nowrap"
             >
               KNOW OUR STORY
             </a>
@@ -766,10 +776,12 @@ export const Home: React.FC = () => {
               <img
                 src={image28Asset}
                 alt="Krishnaprasad, CEO & Creative Director"
-                className="absolute inset-0 w-full h-full object-cover object-top md:object-center"
+                onLoad={() => setCeoLoaded(true)}
+                className={`absolute inset-0 w-full h-full object-cover object-top md:object-center transition-all duration-1000 ease-out ${
+                  ceoLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"
+                }`}
               />
               
-              {/* Figma-Spec Overlay: Gold/Brown tinted gradient bottom overlay */}
               <div
                 className="absolute inset-x-0 bottom-0 h-2/3 z-10 flex flex-col justify-end p-8 md:p-16 text-center text-white"
                 style={{
@@ -793,7 +805,6 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* 10. Experience & CTA (Client Reviews Full Screen Stacked Storytelling) */}
       <section
         ref={testimonialSectionRef}
         className="relative w-full bg-[#EDECE3] flex flex-col justify-center items-center py-16 md:py-24 box-border"
@@ -986,7 +997,6 @@ export const Home: React.FC = () => {
 
           </div>
 
-          {/* Figma-Spec CTA Card: 920px width, 360px height, 6px border, shadow */}
           <div
             ref={ctaCardRef}
             className="relative w-full max-w-[920px] rounded-[24px] sm:rounded-[28px] md:rounded-[32px] border-[4px] sm:border-[5px] md:border-[6px] border-white shadow-[0px_4px_34px_rgba(70,44,0,0.20)] p-6 sm:p-8 md:p-12 text-center flex flex-col items-center justify-center overflow-hidden h-auto min-h-[300px] md:min-h-[360px] box-border mt-10 sm:mt-12 md:mt-16"
@@ -995,7 +1005,7 @@ export const Home: React.FC = () => {
             }}
           >
             <h2
-              className="text-3xl md:text-5xl lg:text-[46px] text-white font-medium leading-[120%] max-w-3xl mb-4 text-center"
+              className="text-3xl md:text-5xl lg:text-[54px] text-white font-medium leading-[120%] max-w-3xl mb-4 text-center"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Woven For Celebrations<br className="hidden sm:inline" /> That Last <span className="italic font-light">A Lifetime</span>
@@ -1003,7 +1013,7 @@ export const Home: React.FC = () => {
             <p className="text-[#EEEEEE] font-normal text-sm md:text-[15px] leading-[150%] max-w-[551px] mx-auto mb-6 font-satoshi">
               From timeless kasavu classics to contemporary ethnic essentials, each piece is crafted to honor tradition while embracing modern elegance.
             </p>
-            <button className="w-full max-w-[300px] h-[48px] sm:h-[52px] border border-white px-[28px] sm:px-[32px] py-[12px] text-[13px] sm:text-[15px] font-normal tracking-[1.6px] uppercase text-white hover:bg-white hover:text-[#1F1911] transition-colors duration-300 font-satoshi flex items-center justify-center cursor-pointer box-border">
+            <button className="w-full max-w-[300px] h-[48px] sm:h-[52px] border border-white px-[28px] sm:px-[32px] py-[12px] text-[13px] sm:text-[15px] font-normal tracking-[1.6px] uppercase text-white hover:bg-white hover:text-[#1F1911] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-satoshi flex items-center justify-center cursor-pointer box-border">
               DISCOVER THE COLLECTION
             </button>
           </div>

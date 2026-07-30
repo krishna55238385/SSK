@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
+import { cn } from "../lib/utils"
 import image30Asset from "../assets/image30.webp"
 import image31Asset from "../assets/image31.webp"
 import image32Asset from "../assets/image32.webp"
@@ -17,52 +18,61 @@ interface ProductCardProps {
 
 const swatchImages = [image31Asset, image32Asset, image33Asset, image34Asset]
 
-const ProductCard: React.FC<ProductCardProps> = ({ image, title, swatches, badge, delay }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay }}
-    className="flex flex-col group cursor-pointer"
-  >
-    {/* Main image */}
-    <div className="w-full aspect-[4/5] overflow-hidden bg-[#f3f0ea] mb-[10px] sm:mb-[12px] md:mb-[14px]">
-      <img
-        src={image}
-        alt={title}
-        className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
-
-    {/* Product title — Satoshi 20px / 500 / #534654 */}
-    <h4 className="font-satoshi text-[13px] sm:text-[15px] md:text-[17px] lg:text-[20px] font-medium leading-[150%] text-[#534654] text-left group-hover:text-[#43252F] transition-colors">
-      {title}
-    </h4>
-
-    {/* Swatch row */}
-    <div className="flex items-center gap-[5px] sm:gap-[6px] mt-[8px]">
-      {swatches.map((src, idx) => (
-        <div
-          key={idx}
-          className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 overflow-hidden border border-[#d4cdbd]/60 shrink-0"
-        >
-          <img src={src} alt="Swatch" className="w-full h-full object-cover" />
-        </div>
-      ))}
-      <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-[#b8a078] text-white text-[9px] sm:text-[10px] md:text-xs font-semibold flex items-center justify-center shrink-0 select-none font-satoshi">
-        {badge}
+const ProductCard: React.FC<ProductCardProps> = ({ image, title, swatches, badge, delay }) => {
+  const [isLoaded, setIsLoaded] = useState(false)
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      className="flex flex-col group cursor-pointer"
+    >
+      {/* Main image */}
+      <div className="w-full aspect-[4/5] overflow-hidden bg-[#f3f0ea] mb-[10px] sm:mb-[12px] md:mb-[14px]">
+        <img
+          src={image}
+          alt={title}
+          onLoad={() => setIsLoaded(true)}
+          className={cn(
+            "w-full h-full object-cover object-center transition-all duration-1000 ease-out",
+            isLoaded ? "opacity-100 scale-100 group-hover:scale-[1.03]" : "opacity-0 scale-105"
+          )}
+          loading="lazy"
+          decoding="async"
+        />
       </div>
-    </div>
-  </motion.div>
-)
+
+      {/* Product title — Satoshi 20px / 500 / #534654 */}
+      <h4 className="font-satoshi text-[13px] sm:text-[15px] md:text-[17px] lg:text-[20px] font-medium leading-[150%] text-[#534654] text-left group-hover:text-[#43252F] transition-colors">
+        {title}
+      </h4>
+
+      {/* Swatch row */}
+      <div className="flex items-center gap-[5px] sm:gap-[6px] mt-[8px]">
+        {swatches.map((src, idx) => (
+          <div
+            key={idx}
+            className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 overflow-hidden border border-[#d4cdbd]/60 shrink-0"
+          >
+            <img src={src} alt="Swatch" className="w-full h-full object-cover" />
+          </div>
+        ))}
+        <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-[#b8a078] text-white text-[9px] sm:text-[10px] md:text-xs font-semibold flex items-center justify-center shrink-0 select-none font-satoshi">
+          {badge}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
 
 /* ─── Collections page ────────────────────────────────────────────── */
 export const Collections: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("All Categories")
+  const [activeTab, setActiveTab] = useState("ALL CATEGORIES")
+  const [heroLoaded, setHeroLoaded] = useState(false)
 
-  const tabs = ["All Categories", "Men", "Women", "Kids", "Family Sets"]
+  const tabs = ["ALL CATEGORIES", "MEN", "WOMEN", "KIDS", "FAMILY SETS"]
 
   const bestSellersList = [
     { id: 1, image: image31Asset, title: "Kasavu Saree", badge: "5+" },
@@ -87,6 +97,15 @@ export const Collections: React.FC = () => {
     { id: 8, image: image33Asset, title: "Kasavu Saree", badge: "4+" },
   ]
 
+  const revealVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as const }
+    }
+  }
+
   return (
     <div className="w-full pb-10 sm:pb-14 md:pb-20 bg-[#fdfcf7]">
 
@@ -95,27 +114,31 @@ export const Collections: React.FC = () => {
         <img
           src={image30Asset}
           alt="All Categories Hero"
-          className="absolute inset-0 w-full h-full object-cover object-center opacity-90"
+          onLoad={() => setHeroLoaded(true)}
+          className={cn(
+            "absolute inset-0 w-full h-full object-cover object-center transition-all duration-1000 ease-out",
+            heroLoaded ? "opacity-90 scale-100" : "opacity-0 scale-105"
+          )}
         />
         <div className="absolute inset-0 bg-black/40" />
 
-        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-[100px] sm:pt-[110px] md:pt-[120px] pb-10 sm:pb-14 md:pb-16">
-
+        {/* Desktop: absolute Figma positions to match Home Hero. Mobile: centered flex */}
+        <div className="absolute inset-0 flex flex-col justify-center lg:block px-5 sm:px-8 md:px-10 lg:px-0 pt-[90px] sm:pt-[100px] lg:pt-0">
+          
           {/* Breadcrumb */}
-          <div className="font-satoshi text-[11px] sm:text-[12px] md:text-[14px] font-normal leading-[150%] tracking-[2.5px] sm:tracking-[3.5px] md:tracking-[4.8px] uppercase text-white/80 mb-4 sm:mb-5 md:mb-6 select-none">
+          <div className="font-satoshi text-[11px] sm:text-[12px] lg:text-[14px] font-normal leading-[24px] tracking-[2.5px] sm:tracking-[3.5px] lg:tracking-[4.8px] uppercase text-white/80 mb-4 sm:mb-5 lg:mb-0 lg:absolute lg:w-max lg:h-[24px] lg:left-[40px] lg:top-[279px] select-none text-center lg:text-left">
             HOME / ALL CATEGORIES
           </div>
 
-          {/* Hero Heading — 64px desktop, scales to mobile */}
+          {/* Hero Heading — 64px desktop */}
           <h1
-            className="font-medium text-white leading-[120%] select-none max-w-[280px] sm:max-w-[420px] md:max-w-[620px] lg:max-w-5xl"
+            className="font-serif font-medium text-white leading-[120%] select-none max-w-[280px] sm:max-w-[420px] md:max-w-[620px] lg:max-w-[582px] lg:h-[154px] lg:left-[40px] lg:top-[307px] lg:absolute text-center lg:text-left"
             style={{
-              fontFamily: "'Playfair Display', serif",
               fontSize: "clamp(28px, 6vw, 64px)",
             }}
           >
-            Discover the Full{" "}
-            <span className="italic">Collection.</span>
+            Discover the Full <br className="hidden sm:inline" />{" "}
+            <span className="italic font-light">Collection.</span>
           </h1>
         </div>
       </div>
@@ -124,12 +147,18 @@ export const Collections: React.FC = () => {
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 pt-8 sm:pt-10 md:pt-14">
 
         {/* ── Category Filter Tabs ─────────────────────────────────── */}
-        <div className="flex flex-wrap gap-2 sm:gap-2.5 md:gap-3 mb-8 sm:mb-10 md:mb-14 lg:mb-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={revealVariants}
+          className="flex flex-wrap gap-2 sm:gap-2.5 md:gap-3 mb-8 sm:mb-10 md:mb-14 lg:mb-16"
+        >
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`font-satoshi px-[14px] sm:px-[18px] md:px-[24px] py-[8px] sm:py-[9px] md:py-[10px] text-[12px] sm:text-[13px] md:text-[14px] font-normal leading-[150%] tracking-[0.5px] transition-colors ${
+              className={`font-satoshi px-[14px] sm:px-[18px] md:px-[24px] py-[8px] sm:py-[9px] md:py-[10px] text-[12px] sm:text-[14px] lg:text-[16px] font-medium leading-[150%] tracking-[1px] lg:tracking-[1.6px] uppercase hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 ${
                 activeTab === tab
                   ? "bg-[#3D2600] text-white"
                   : "bg-[#EDECE3] text-[#534654] hover:bg-[#e0ddd5]"
@@ -138,15 +167,20 @@ export const Collections: React.FC = () => {
               {tab}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* ── Best Sellers ──────────────────────────────────────────── */}
-        <div className="mb-12 sm:mb-16 md:mb-24 lg:mb-32">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={revealVariants}
+          className="mb-12 sm:mb-16 md:mb-24 lg:mb-32"
+        >
           <h2
-            className="font-medium leading-[120%] text-[#43252F] mb-[20px] sm:mb-[28px] md:mb-[40px] lg:mb-[48px] text-left"
+            className="font-medium leading-[120%] text-[#43252F] mb-[20px] sm:mb-[28px] md:mb-[40px] lg:mb-[48px] text-left text-[24px] sm:text-[32px] md:text-[40px] lg:text-[44px]"
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(22px, 3.5vw, 44px)",
             }}
           >
             Best Sellers
@@ -165,15 +199,20 @@ export const Collections: React.FC = () => {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* ── New Arrivals ──────────────────────────────────────────── */}
-        <div className="mb-12 sm:mb-16 md:mb-24 lg:mb-32">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={revealVariants}
+          className="mb-12 sm:mb-16 md:mb-24 lg:mb-32"
+        >
           <h2
-            className="font-medium leading-[120%] text-[#43252F] mb-[20px] sm:mb-[28px] md:mb-[40px] lg:mb-[48px] text-left"
+            className="font-medium leading-[120%] text-[#43252F] mb-[20px] sm:mb-[28px] md:mb-[40px] lg:mb-[48px] text-left text-[24px] sm:text-[32px] md:text-[40px] lg:text-[44px]"
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(22px, 3.5vw, 44px)",
             }}
           >
             New Arrivals
@@ -191,15 +230,20 @@ export const Collections: React.FC = () => {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* ── Collections ───────────────────────────────────────────── */}
-        <div className="mb-12 sm:mb-16 md:mb-24 lg:mb-32">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={revealVariants}
+          className="mb-12 sm:mb-16 md:mb-24 lg:mb-32"
+        >
           <h2
-            className="font-medium leading-[120%] text-[#43252F] mb-[20px] sm:mb-[28px] md:mb-[40px] lg:mb-[48px] text-left"
+            className="font-medium leading-[120%] text-[#43252F] mb-[20px] sm:mb-[28px] md:mb-[40px] lg:mb-[48px] text-left text-[24px] sm:text-[32px] md:text-[40px] lg:text-[44px]"
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(22px, 3.5vw, 44px)",
             }}
           >
             Collections
@@ -217,28 +261,39 @@ export const Collections: React.FC = () => {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* ── Load More ────────────────────────────────────────────── */}
-        <div className="flex justify-center mb-10 sm:mb-14 md:mb-20 lg:mb-28">
-          <button className="font-satoshi border border-[#735C00] text-[#735C00] px-[32px] sm:px-[40px] md:px-[48px] py-[12px] md:py-[14px] text-[12px] sm:text-[13px] md:text-[14px] font-normal leading-[150%] tracking-[1.6px] uppercase hover:bg-[#735C00] hover:text-[#EDECE3] transition-colors duration-300">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={revealVariants}
+          className="flex justify-center mb-10 sm:mb-14 md:mb-20 lg:mb-28"
+        >
+          <button className="font-satoshi border border-[#735C00] text-[#735C00] px-[32px] sm:px-[40px] md:px-[48px] py-[12px] md:py-[14px] text-[12px] sm:text-[13px] md:text-[14px] font-normal leading-[150%] tracking-[1.6px] uppercase hover:bg-[#735C00] hover:text-[#EDECE3] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300">
             LOAD MORE
           </button>
-        </div>
+        </motion.div>
       </div>
 
       {/* ══ CTA Section ══════════════════════════════════════════════ */}
-      <section className="w-full pt-2 sm:pt-4 md:pt-8 pb-8 sm:pb-10 md:pb-14 px-4 sm:px-6 md:px-16 lg:px-24">
+      <motion.section
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={revealVariants}
+        className="w-full pt-2 sm:pt-4 md:pt-8 pb-8 sm:pb-10 md:pb-14 px-4 sm:px-6 md:px-16 lg:px-24"
+      >
         <div
           className="max-w-[920px] mx-auto rounded-[20px] sm:rounded-[24px] md:rounded-[32px] border-[4px] sm:border-[5px] md:border-[6px] border-white shadow-[0px_4px_34px_rgba(70,44,0,0.20)] p-6 sm:p-8 md:p-12 text-center flex flex-col items-center justify-center relative overflow-hidden"
           style={{ background: "linear-gradient(180deg, #462C00 0%, #1F1911 100%)" }}
         >
           {/* CTA Heading — 54px desktop */}
           <h2
-            className="font-medium leading-[120%] text-white mb-4 sm:mb-5 md:mb-6 max-w-3xl"
+            className="font-medium leading-[120%] text-white mb-4 sm:mb-5 md:mb-6 max-w-3xl text-[24px] sm:text-[36px] md:text-[48px] lg:text-[54px]"
             style={{
               fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(22px, 5vw, 54px)",
             }}
           >
             Woven For Celebrations
@@ -246,18 +301,19 @@ export const Collections: React.FC = () => {
             <span className="italic font-light">A Lifetime</span>
           </h2>
 
-          {/* CTA Body — Satoshi 16px */}
-          <p className="font-satoshi text-[13px] sm:text-[14px] md:text-[16px] font-normal leading-[150%] text-white/90 max-w-[551px] mx-auto mb-6 sm:mb-8 md:mb-10">
+          {/* CTA Body — Satoshi 15px */}
+          <p className="font-satoshi text-sm md:text-[15px] font-normal leading-[150%] text-[#EEEEEE] max-w-[551px] mx-auto mb-6 sm:mb-8 md:mb-10">
             From timeless kasavu classics to contemporary ethnic essentials, each piece is crafted to honor tradition while embracing modern elegance.
           </p>
 
           {/* CTA Button */}
-          <button className="font-satoshi border border-white px-[28px] sm:px-[36px] md:px-[40px] py-[11px] sm:py-[13px] md:py-[14px] text-[11px] sm:text-[13px] md:text-[15px] font-normal leading-[24px] tracking-[1.4px] sm:tracking-[1.6px] uppercase text-white hover:bg-white hover:text-[#1F1911] transition-colors duration-300 whitespace-nowrap">
+          <button className="font-satoshi border border-white px-[28px] sm:px-[36px] md:px-[40px] py-[11px] sm:py-[13px] md:py-[14px] text-[12px] sm:text-[14px] md:text-[15px] font-normal leading-[24px] tracking-[1.4px] sm:tracking-[1.6px] uppercase text-white hover:bg-white hover:text-[#1F1911] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 whitespace-nowrap">
             DISCOVER THE COLLECTION
           </button>
         </div>
-      </section>
+      </motion.section>
 
     </div>
   )
 }
+

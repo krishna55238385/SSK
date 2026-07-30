@@ -21,6 +21,8 @@ export const Card: React.FC<CardProps> = ({
   bordered = false,
   alignText = 'center'
 }) => {
+  const [isLoaded, setIsLoaded] = React.useState(false)
+
   return (
     <motion.div 
       className={cn(
@@ -35,7 +37,11 @@ export const Card: React.FC<CardProps> = ({
         <img 
           src={imageSrc} 
           alt={title} 
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          onLoad={() => setIsLoaded(true)}
+          className={cn(
+            "absolute inset-0 w-full h-full object-cover transition-all duration-1000 ease-out",
+            isLoaded ? "opacity-100 scale-100 group-hover:scale-[1.03]" : "opacity-0 scale-105"
+          )}
           loading="lazy"
         />
       </div>

@@ -13,6 +13,7 @@ export const FestiveComboSection: React.FC = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [bgLoaded, setBgLoaded] = React.useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -129,6 +130,11 @@ export const FestiveComboSection: React.FC = () => {
           ease: "power3.inOut",
           duration: 1.2
         }, 3.2)
+        .to(overlayRef.current, {
+          opacity: 0,
+          ease: "power3.inOut",
+          duration: 1.2
+        }, 3.2)
         .to(section, {
           backgroundColor: "#fdfcf7", // Dissolve into Founder section background
           ease: "none",
@@ -171,8 +177,10 @@ export const FestiveComboSection: React.FC = () => {
           ref={bgRef}
           src={image27Asset}
           alt="Festive Family Combo Sets"
-          className="w-full h-full object-cover object-center will-change-transform"
-          style={{ opacity: 0.4 }}
+          onLoad={() => setBgLoaded(true)}
+          className={`w-full h-full object-cover object-center will-change-transform transition-opacity duration-1000 ${
+            bgLoaded ? "opacity-40" : "opacity-0"
+          }`}
         />
       </div>
 

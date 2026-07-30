@@ -48,9 +48,10 @@ export const Navbar: React.FC = () => {
         {/* OUR Story */}
         <a 
           href="#our-story"
-          className="w-[108px] h-[24px] font-satoshi font-normal text-[14px] leading-[24px] flex items-center tracking-[4px] uppercase text-[#F7EBD7] flex-none order-0 grow-0 no-underline whitespace-nowrap"
+          className="relative group w-[108px] h-[24px] font-satoshi font-normal text-[14px] leading-[24px] flex items-center tracking-[4px] uppercase text-[#F7EBD7] flex-none order-0 grow-0 no-underline whitespace-nowrap"
         >
           Our Story
+          <span className="absolute bottom-[-2px] left-0 w-[84px] h-[1.5px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
         </a>
 
         {/* Frame 83 */}
@@ -61,9 +62,10 @@ export const Navbar: React.FC = () => {
         >
           <Link 
             to="/collections" 
-            className="w-[133px] h-[24px] font-satoshi font-normal text-[14px] leading-[24px] flex items-center tracking-[4px] uppercase text-[#F7EBD7] flex-none order-0 grow-0 no-underline whitespace-nowrap"
+            className="relative group w-[133px] h-[24px] font-satoshi font-normal text-[14px] leading-[24px] flex items-center tracking-[4px] uppercase text-[#F7EBD7] flex-none order-0 grow-0 no-underline whitespace-nowrap"
           >
             Collections
+            <span className="absolute bottom-[-2px] left-0 w-[114px] h-[1.5px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
           </Link>
 
           {/* Plus icon wrapper */}
@@ -123,7 +125,7 @@ export const Navbar: React.FC = () => {
       {/* Desktop Button */}
       <a
         href="#contact"
-        className="hidden lg:flex group box-border flex-row justify-center items-center px-[24px] py-[8px] absolute w-[177px] h-[42px] right-[40px] top-[27px] border border-[#E3C89B] hover:bg-[#E3C89B] transition-all duration-300 no-underline cursor-pointer"
+        className="hidden lg:flex group box-border flex-row justify-center items-center px-[24px] py-[8px] absolute w-[177px] h-[42px] right-[40px] top-[27px] border border-[#E3C89B] hover:bg-[#E3C89B] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 no-underline cursor-pointer"
       >
         <span
           className="w-[127px] h-[24px] font-satoshi font-normal text-[16px] leading-[24px] flex items-center justify-center tracking-[1.6px] uppercase text-[#E3C89B] group-hover:text-[#2c2214] transition-all duration-300 whitespace-nowrap flex-none order-0 grow-0"

@@ -43,7 +43,7 @@ export const NewsletterPopup: React.FC = () => {
                 <X strokeWidth={1} className="w-8 h-8 md:w-9 md:h-9" />
               </button>
               
-              <div className="text-xs tracking-[0.25em] uppercase text-[#9a7b4f] mb-3 font-medium">
+              <div className="font-satoshi text-xs tracking-[0.25em] uppercase text-[#9a7b4f] mb-3 font-medium">
                 STAY CONNECTED
               </div>
 
@@ -56,11 +56,11 @@ export const NewsletterPopup: React.FC = () => {
                   type="email" 
                   placeholder="your@gmail.com" 
                   required
-                  className="w-full border border-brand-gray/50 px-5 py-3.5 text-sm md:text-base focus:outline-none focus:border-brand-text placeholder-gray-400 rounded-xs transition-colors"
+                  className="w-full border border-brand-gray/50 px-5 py-3.5 text-sm md:text-base focus:outline-none focus:border-brand-text placeholder-gray-400 rounded-xs transition-all duration-300 font-satoshi"
                 />
                 <button 
                   type="submit"
-                  className="w-full bg-[#7a7a7a] hover:bg-gray-700 text-white transition-colors py-4 text-sm tracking-[0.2em] uppercase font-medium rounded-xs shadow-sm"
+                  className="w-full bg-[#7a7a7a] hover:bg-gray-700 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] py-4 text-sm tracking-[0.2em] uppercase font-medium rounded-xs shadow-sm font-satoshi"
                 >
                   Submit
                 </button>

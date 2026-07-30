@@ -103,35 +103,40 @@ export const Footer: React.FC = () => {
           <div className="flex flex-col justify-center items-center xl:items-start gap-[28px] shrink-0 w-full md:w-[194px] footer-shop-col">
             {/* Frame 52 (Badge) */}
             <div className="flex flex-row justify-center items-center px-[8px] py-[2px] gap-[10px] bg-[#3D2600] rounded-[6px] shrink-0" style={{ width: '59px', height: '28px' }}>
-              <span className="font-sans font-normal text-[13px] leading-[150%] flex items-center text-center text-[#A38300] shrink-0" style={{ height: '24px' }}>SHOP</span>
+              <span className="font-satoshi font-normal text-[13px] leading-[150%] flex items-center text-center text-[#A38300] shrink-0" style={{ height: '24px' }}>SHOP</span>
             </div>
 
             {/* Frame 61 (Links) */}
             <div className="flex flex-col items-center xl:items-start gap-[16px] shrink-0 w-full" style={{ height: '184px' }}>
               
-              <Link to="/collections?category=women" className="flex flex-row justify-center items-center gap-[8px] shrink-0 group" style={{ height: '24px' }}>
-                <span className="font-sans font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Women</span>
+              <Link to="/collections?category=women" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
+                <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Women</span>
                 <ArrowUpRight className="text-[#EEEEEE] group-hover:text-white transition-colors" style={{ width: '14px', height: '14px' }} />
+                <span className="absolute bottom-[-1px] left-0 w-[48px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
               
-              <Link to="/collections?category=men" className="flex flex-row justify-center items-center gap-[8px] shrink-0 group" style={{ height: '24px' }}>
-                <span className="font-sans font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Men</span>
+              <Link to="/collections?category=men" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
+                <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Men</span>
                 <ArrowUpRight className="text-[#EEEEEE] group-hover:text-white transition-colors" style={{ width: '14px', height: '14px' }} />
+                <span className="absolute bottom-[-1px] left-0 w-[32px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
 
-              <Link to="/collections?category=kids" className="flex flex-row justify-center items-center gap-[8px] shrink-0 group" style={{ height: '24px' }}>
-                <span className="font-sans font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Kids</span>
+              <Link to="/collections?category=kids" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
+                <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Kids</span>
                 <ArrowUpRight className="text-[#EEEEEE] group-hover:text-white transition-colors" style={{ width: '14px', height: '14px' }} />
+                <span className="absolute bottom-[-1px] left-0 w-[32px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
 
-              <Link to="/collections?category=wedding" className="flex flex-row justify-center items-center gap-[8px] shrink-0 group" style={{ height: '24px' }}>
-                <span className="font-sans font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Wedding Wear</span>
+              <Link to="/collections?category=wedding" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
+                <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Wedding Wear</span>
                 <ArrowUpRight className="text-[#EEEEEE] group-hover:text-white transition-colors" style={{ width: '14px', height: '14px' }} />
+                <span className="absolute bottom-[-1px] left-0 w-[94px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
 
-              <Link to="/collections?category=festive" className="flex flex-row items-end gap-[8px] shrink-0 group" style={{ height: '24px' }}>
-                <span className="font-sans font-normal text-[14px] leading-[150%] flex items-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Festive Collections</span>
+              <Link to="/collections?category=festive" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
+                <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Festive Collections</span>
                 <ArrowUpRight className="text-[#EEEEEE] group-hover:text-white transition-colors" style={{ width: '14px', height: '14px' }} />
+                <span className="absolute bottom-[-1px] left-0 w-[124px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </Link>
             </div>
           </div>
@@ -142,24 +147,26 @@ export const Footer: React.FC = () => {
             <div className="flex flex-col items-center xl:items-start gap-[28px] w-full shrink-0" style={{ height: '184px' }}>
               {/* Badge */}
               <div className="flex flex-row justify-center items-center px-[8px] py-[2px] gap-[10px] bg-[#3D2600] rounded-[6px] shrink-0" style={{ width: '89px', height: '28px' }}>
-                <span className="font-sans font-normal text-[13px] leading-[150%] flex items-center text-center text-[#A38300] shrink-0" style={{ height: '24px' }}>CONTACT</span>
+                <span className="font-satoshi font-normal text-[13px] leading-[150%] flex items-center text-center text-[#A38300] shrink-0" style={{ height: '24px' }}>CONTACT</span>
               </div>
 
               {/* Links */}
               <div className="flex flex-col items-center xl:items-start gap-[16px] shrink-0 w-full" style={{ height: '128px' }}>
-                <a href="mailto:hello@sskhandlooms.com" className="flex flex-row justify-center items-center gap-[8px] shrink-0 group" style={{ height: '24px' }}>
+                <a href="mailto:hello@sskhandlooms.com" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
                   <Mail className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors" style={{ width: '18px', height: '18px' }} />
-                  <span className="font-sans font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>hello@sskhandlooms.com</span>
+                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>hello@sskhandlooms.com</span>
+                  <span className="absolute bottom-[-1px] left-[26px] w-[146px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </a>
                 
-                <a href="tel:+919999999999" className="flex flex-row justify-center items-center gap-[8px] shrink-0 group" style={{ height: '24px' }}>
+                <a href="tel:+919999999999" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
                   <Phone className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors" style={{ width: '18px', height: '18px' }} />
-                  <span className="font-sans font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>+91 99999 99999</span>
+                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>+91 99999 99999</span>
+                  <span className="absolute bottom-[-1px] left-[26px] w-[106px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </a>
 
                 <div className="flex flex-row justify-center items-start gap-[8px] shrink-0" style={{ height: '48px' }}>
                   <MapPin className="text-[#735C00] mt-1 shrink-0" style={{ width: '18px', height: '18px' }} />
-                  <span className="font-sans font-normal text-[14px] leading-[150%] flex items-center text-center xl:text-left text-[#EEEEEE]" style={{ width: '174px' }}>Coimbatore, Tamil Nadu, India</span>
+                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center xl:text-left text-[#EEEEEE]" style={{ width: '174px' }}>Coimbatore, Tamil Nadu, India</span>
                 </div>
               </div>
             </div>
@@ -189,7 +196,7 @@ export const Footer: React.FC = () => {
 
         {/* Frame 8 (Copyright Text) */}
         <div className="relative xl:absolute flex justify-center items-center z-10 w-full xl:w-[363px] xl:left-[418.5px] xl:top-[490px] footer-copyright">
-          <span className="font-sans font-light text-[14px] leading-[150%] tracking-[-0.01em] text-[#9E9E9E] text-center w-full block">
+          <span className="font-satoshi font-light text-[14px] leading-[150%] tracking-[-0.01em] text-[#9E9E9E] text-center w-full block">
             All rights reserved © 2026 Copyright SSK Handlooms
           </span>
         </div>
