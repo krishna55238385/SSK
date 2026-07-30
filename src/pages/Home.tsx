@@ -678,9 +678,9 @@ export const Home: React.FC = () => {
           />
 
           {/* Top Left Heading */}
-          <div className="absolute top-[80px] lg:top-[120px] left-[40px] lg:left-[80px] z-10 max-w-[693px]">
+          <div className="absolute top-[40px] sm:top-[80px] lg:top-[120px] left-[20px] sm:left-[40px] lg:left-[80px] right-[20px] sm:right-auto z-10 max-w-[693px]">
             <h2
-              className="text-[#FFFFFF] text-[36px] md:text-[52px] lg:text-[64px] font-medium leading-[120%]"
+              className="text-[#FFFFFF] text-[24px] sm:text-[36px] md:text-[52px] lg:text-[64px] font-medium leading-[120%]"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               Some Traditions Are<br />
@@ -689,13 +689,13 @@ export const Home: React.FC = () => {
           </div>
 
           {/* Bottom Right Quote and Button */}
-          <div className="absolute bottom-[80px] right-[40px] lg:right-[80px] z-10 w-full max-w-[570px]">
-            <p className="text-[#FFFFFF] font-normal text-[18px] lg:text-[24px] leading-[150%] mb-[32px] font-satoshi opacity-95">
+          <div className="absolute bottom-[40px] sm:bottom-[80px] left-[20px] sm:left-auto right-[20px] sm:right-[40px] lg:right-[80px] z-10 w-auto max-w-[90%] sm:max-w-[450px] md:max-w-[520px] lg:max-w-[570px]">
+            <p className="text-[#FFFFFF] font-normal text-[13px] sm:text-[16px] md:text-[20px] lg:text-[24px] leading-[150%] mb-[16px] sm:mb-[24px] lg:mb-[32px] font-satoshi opacity-95">
               "Born from the rich cultural roots of Kerala, SSK Handlooms is more than a brand - It is a commitment to preserve the art of handloom weaving and keep our traditions alive. From the looms of skilled artisans to the celebrations of today, we bring you authenticity you can feel."
             </p>
             <a
               href="/story"
-              className="box-border flex justify-center items-center px-[40px] py-[16px] w-[243px] h-[58px] border border-[#FFFFFF] bg-transparent text-[#FFFFFF] text-[16px] font-normal tracking-[1.6px] uppercase hover:bg-white hover:text-[#1A0D1C] transition-colors font-satoshi pointer-events-auto whitespace-nowrap"
+              className="box-border flex justify-center items-center px-[28px] sm:px-[40px] py-[12px] sm:py-[16px] w-[200px] sm:w-[243px] h-[48px] sm:h-[58px] border border-[#FFFFFF] bg-transparent text-[#FFFFFF] text-[14px] sm:text-[16px] font-normal tracking-[1.6px] uppercase hover:bg-white hover:text-[#1A0D1C] transition-colors font-satoshi pointer-events-auto whitespace-nowrap"
             >
               KNOW OUR STORY
             </a>
