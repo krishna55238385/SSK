@@ -160,11 +160,7 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
         scale: 0.96,
         opacity: 0.3,
         ease: "power2.inOut"
-      })
-      .to(pinRef.current, {
-        backgroundColor: "#0d0a08",
-        ease: "none"
-      }, 0);
+      });
     }, pinRef);
 
     return () => ctx.revert();
