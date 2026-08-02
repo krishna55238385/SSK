@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, ArrowUpRight } from "lucide-react"
 import logoImg from "../../assets/logo.webp"
-import watermarkImg from "../../assets/footer-watermark.png"
+import watermarkImg from "../../assets/footer-watermark.webp"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 

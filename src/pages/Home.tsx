@@ -48,24 +48,30 @@ import { FestiveComboSection } from "../components/FestiveComboSection";
 
 export const Home: React.FC = () => {
   React.useEffect(() => {
-    const handleLoad = () => {
-      ScrollTrigger.refresh();
+    // Previously this called ScrollTrigger.refresh() twice — once on window
+    // 'load' and again on a blind 500ms timeout "just in case". Each refresh
+    // forces GSAP to synchronously recalculate every registered trigger's
+    // position across the whole page (a real layout-thrashing cost, and
+    // exactly what Lighthouse's "Forced reflow" insight was flagging).
+    // A single refresh, debounced and fired only after the page has actually
+    // finished loading, gets the same correctness without the duplicate cost.
+    let refreshTimer: ReturnType<typeof setTimeout> | undefined;
+    const debouncedRefresh = () => {
+      if (refreshTimer) clearTimeout(refreshTimer);
+      refreshTimer = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 200);
     };
+
     if (document.readyState === 'complete') {
-      handleLoad();
+      debouncedRefresh();
     } else {
-      window.addEventListener('load', handleLoad);
+      window.addEventListener('load', debouncedRefresh, { once: true });
     }
 
-    // Refresh ScrollTrigger after a 500ms timeout to allow any React DOM updates and image loads to settle.
-    // This guarantees that pinned section height additions (like pinSpacing) are fully factored into trigger calculations.
-    const timer = setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, 500);
-
     return () => {
-      window.removeEventListener('load', handleLoad);
-      clearTimeout(timer);
+      window.removeEventListener('load', debouncedRefresh);
+      if (refreshTimer) clearTimeout(refreshTimer);
     };
   }, []);
   const heroImg = heroUploadedImg

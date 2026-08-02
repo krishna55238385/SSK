@@ -1,12 +1,16 @@
-
-import React, { useEffect, lazy, Suspense } from 'react'
+import React, { useEffect, useRef, Suspense, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import gsap from 'gsap'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
-const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })))
-const Collections = lazy(() => import('./pages/Collections').then(m => ({ default: m.Collections })))
-const NewsletterPopup = lazy(() => import('./components/ui/NewsletterPopup').then(m => ({ default: m.NewsletterPopup })))
+import { NewsletterPopup } from './components/ui/NewsletterPopup'
+
+// Lazy-loaded route pages: keeps the initial bundle to just what "/" needs,
+// instead of shipping the Collections page bundle to every visitor up front.
+const Home = lazy(() => import('./pages/Home').then((m) => ({ default: m.Home })))
+const Collections = lazy(() =>
+  import('./pages/Collections').then((m) => ({ default: m.Collections }))
+)
 
 // Helper for scroll restoration on route changes
 const ScrollToTop: React.FC = () => {
@@ -21,44 +25,48 @@ interface PageWrapperProps {
   children: React.ReactNode
 }
 
+// Fade/slide-in on route mount, done with gsap instead of framer-motion so the
+// whole app only ships one animation library. Note: this replaces
+// framer-motion's crossfade (old page fading out while new one fades in) with
+// a straightforward fade-in of the new page only — a deliberate trade-off to
+// drop the extra ~kB of framer-motion from the bundle.
 const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -20 }}
-      transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-    >
-      {children}
-    </motion.div>
-  )
+  const ref = useRef<HTMLDivElement>(null)
+  const location = useLocation()
+
+  useEffect(() => {
+    if (!ref.current) return
+    gsap.fromTo(
+      ref.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+    )
+  }, [location.pathname])
+
+  return <div ref={ref}>{children}</div>
 }
 
+// Shown briefly while a lazy-loaded route chunk downloads. Matches the app
+// background so there's no flash of unstyled/blank content.
+const PageFallback: React.FC = () => (
+  <div className="min-h-screen w-full bg-brand-light" />
+)
+
 function AppContent() {
-  const location = useLocation()
-  
   return (
     <div className="relative min-h-screen flex flex-col font-sans bg-brand-light text-brand-text selection:bg-brand-gold selection:text-white">
       <ScrollToTop />
       <Navbar />
       <main className="flex-grow">
-        <AnimatePresence mode="wait">
-          <Suspense fallback={
-            <div className="min-h-screen bg-brand-light flex items-center justify-center">
-              <div className="w-10 h-10 border-4 border-brand-gold border-t-transparent rounded-full animate-spin"></div>
-            </div>
-          }>
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-              <Route path="/collections" element={<PageWrapper><Collections /></PageWrapper>} />
-            </Routes>
-          </Suspense>
-        </AnimatePresence>
+        <Suspense fallback={<PageFallback />}>
+          <Routes>
+            <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+            <Route path="/collections" element={<PageWrapper><Collections /></PageWrapper>} />
+          </Routes>
+        </Suspense>
       </main>
       <Footer />
-      <Suspense fallback={null}>
-        <NewsletterPopup />
-      </Suspense>
+      <NewsletterPopup />
     </div>
   )
 }
@@ -72,4 +80,3 @@ function App() {
 }
 
 export default App
-
