@@ -27,7 +27,15 @@ export const useCircularAnimation = ({ imagesCount, centerRef }: UseCircularAnim
     };
     
     updateRadius();
-    window.addEventListener('resize', updateRadius);
+    let resizeTimeout: number;
+    const handleResize = () => {
+      window.clearTimeout(resizeTimeout);
+      resizeTimeout = window.setTimeout(() => {
+        updateRadius();
+        updatePositions();
+      }, 100);
+    };
+    window.addEventListener('resize', handleResize);
 
     const updatePositions = () => {
       const { progress } = proxy;
@@ -123,7 +131,8 @@ export const useCircularAnimation = ({ imagesCount, centerRef }: UseCircularAnim
     });
 
     return () => {
-      window.removeEventListener('resize', updateRadius);
+      window.removeEventListener('resize', handleResize);
+      window.clearTimeout(resizeTimeout);
       imgElements.forEach((img) => {
         img.removeEventListener('load', checkAllLoaded);
         img.removeEventListener('error', checkAllLoaded);

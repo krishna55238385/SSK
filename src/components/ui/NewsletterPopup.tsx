@@ -39,6 +39,7 @@ export const NewsletterPopup: React.FC = () => {
               <button 
                 onClick={() => setIsOpen(false)}
                 className="absolute top-5 right-5 text-brand-text/70 hover:text-black focus:outline-none transition-colors"
+                aria-label="Close newsletter popup"
               >
                 <X strokeWidth={1} className="w-8 h-8 md:w-9 md:h-9" />
               </button>
@@ -60,7 +61,7 @@ export const NewsletterPopup: React.FC = () => {
                 />
                 <button 
                   type="submit"
-                  className="w-full bg-[#7a7a7a] hover:bg-gray-700 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] py-4 text-sm tracking-[0.2em] uppercase font-medium rounded-xs shadow-sm font-satoshi"
+                  className="w-full bg-brand-dark hover:bg-brand-dark/90 text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] py-4 text-sm tracking-[0.2em] uppercase font-medium rounded-xs shadow-sm font-satoshi"
                 >
                   Submit
                 </button>

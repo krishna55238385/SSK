@@ -92,7 +92,7 @@ export const Home: React.FC = () => {
   // Tribute Section Refs
   const tributeSectionRef = React.useRef<HTMLDivElement>(null);
   const tributeLogoRef = React.useRef<HTMLImageElement>(null);
-  const tributeQuoteRef = React.useRef<HTMLHeadingElement>(null);
+  const tributeQuoteRef = React.useRef<HTMLQuoteElement>(null);
   const tributeHeadingRef = React.useRef<HTMLHeadingElement>(null);
   const tributeDescRef = React.useRef<HTMLParagraphElement>(null);
 
@@ -109,7 +109,7 @@ export const Home: React.FC = () => {
 
   // Legacy Section Refs
   const legacySectionRef = React.useRef<HTMLDivElement>(null);
-  const legacyQuoteRef = React.useRef<HTMLHeadingElement>(null);
+  const legacyQuoteRef = React.useRef<HTMLQuoteElement>(null);
   const legacyImageRef = React.useRef<HTMLDivElement>(null);
 
   // Founder's Word Refs
@@ -316,9 +316,9 @@ export const Home: React.FC = () => {
   }, []);
 
   const stackConfig = [
-    { top: 433, right: 40, width: 238, height: 236, zIndex: 30, opacity: 1, rotate: 0, shadow: true }, // Slot 0 (Front)
-    { top: 420, right: 49, width: 221, height: 220, zIndex: 20, opacity: 0.9, rotate: 3, shadow: true }, // Slot 1 (Middle)
-    { top: 412, right: 52, width: 209, height: 208, zIndex: 10, opacity: 0.9, rotate: 6, shadow: false }, // Slot 2 (Back)
+    { x: 0, y: 0, scale: 1, zIndex: 30, opacity: 1, rotate: 0, shadow: true }, // Slot 0 (Front)
+    { x: -9, y: -13, scale: 0.928, zIndex: 20, opacity: 0.9, rotate: 3, shadow: true }, // Slot 1 (Middle)
+    { x: -12, y: -21, scale: 0.878, zIndex: 10, opacity: 0.9, rotate: 6, shadow: false }, // Slot 2 (Back)
   ];
 
   const cardIds = [0, 1, 2];
@@ -337,10 +337,11 @@ export const Home: React.FC = () => {
           className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-1000 ease-out ${
             heroLoaded ? "opacity-100 scale-100" : "opacity-0 scale-105"
           }`}
+          loading="eager"
           fetchPriority="high"
           decoding="async"
         />
-        <div className="absolute inset-0" />
+        <div className="absolute inset-0 bg-black/40" />
 
         {/* ── Mobile/tablet: flex column layout. Desktop lg+: absolute Figma pixel positions ── */}
         <div className="absolute inset-0 flex flex-col justify-center lg:block px-5 sm:px-8 md:px-10 lg:px-0 pt-[90px] sm:pt-[100px] lg:pt-0">
@@ -374,9 +375,10 @@ export const Home: React.FC = () => {
           const slot = getSlot(id);
           const cfg = stackConfig[slot];
 
-          let x = 0;
-          let y = 0;
+          let x = cfg.x;
+          let y = cfg.y;
           let rotate = cfg.rotate;
+          let scale = cfg.scale;
 
           if (slot === 0) {
             if (isAnimatingOut) {
@@ -386,23 +388,21 @@ export const Home: React.FC = () => {
             }
           }
 
-          const textTop = cfg.height - 62;
-          const titleTop = textTop + 21;
+          const textTop = 174; // 236 - 62
+          const titleTop = 195; // 174 + 21
+          const isTextVisible = slot === 0 || (slot === 1 && isAnimatingOut);
 
           return (
             <motion.div
               key={id}
               initial={false}
               animate={{
-                top: cfg.top,
-                right: cfg.right,
-                width: cfg.width,
-                height: cfg.height,
-                zIndex: cfg.zIndex,
-                opacity: cfg.opacity,
-                rotate: rotate,
                 x: x,
                 y: y,
+                scale: scale,
+                rotate: rotate,
+                zIndex: cfg.zIndex,
+                opacity: cfg.opacity,
               }}
               transition={{
                 duration: isAnimatingOut && slot === 0 ? 1.0 : 0.8,
@@ -410,6 +410,10 @@ export const Home: React.FC = () => {
               }}
               style={{
                 position: "absolute",
+                top: 433,
+                right: 40,
+                width: 238,
+                height: 236,
                 transformOrigin: "bottom left",
               }}
               className={`bg-white box-border ${cfg.shadow ? "shadow-[0px_20px_40px_rgba(0,0,0,0.25)]" : "shadow-[0px_5px_10px_rgba(0,0,0,0.1)]"
@@ -430,18 +434,22 @@ export const Home: React.FC = () => {
                   className="absolute inset-0 w-full h-full object-cover object-center"
                 />
               </div>
-              <div
-                className="absolute w-[84px] h-[21px] left-[12px] font-['DM_Sans'] font-medium text-[14px] leading-[150%] text-[#9E9E9E] whitespace-nowrap"
+              <motion.div
+                className="absolute w-[84px] h-[21px] left-[12px] font-sans font-medium text-[14px] leading-[150%] text-[#616161] whitespace-nowrap"
                 style={{ top: textTop }}
+                animate={{ opacity: isTextVisible ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
               >
                 BEST SELLER
-              </div>
-              <div
+              </motion.div>
+              <motion.div
                 className="absolute w-[102px] h-[24px] left-[12px] font-serif font-normal text-[16px] leading-[150%] text-black whitespace-nowrap"
                 style={{ top: titleTop }}
+                animate={{ opacity: isTextVisible ? 1 : 0 }}
+                transition={{ duration: 0.3 }}
               >
                 Kasavu Sarees
-              </div>
+              </motion.div>
             </motion.div>
           );
         })}
@@ -480,13 +488,13 @@ export const Home: React.FC = () => {
 
           {/* Blockquote */}
           <div className="px-[26px] max-w-[810px]">
-            <h3
+            <blockquote
               ref={tributeQuoteRef}
               className="text-[#462C00] italic font-medium text-[28px] md:text-[44px] leading-[150%] text-center"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
               "Every thread tells a story of a thousand years, woven with the gold of our ancestors."
-            </h3>
+            </blockquote>
           </div>
 
           {/* Text Container */}
@@ -715,16 +723,16 @@ export const Home: React.FC = () => {
 
       <section ref={legacySectionRef} className="w-full bg-[#fdfcf7] py-14 md:py-20 px-6 overflow-hidden">
         <div className="max-w-5xl mx-auto flex flex-col items-center">
-          <h2 ref={legacyQuoteRef} className="font-['Playfair_Display'] italic text-center text-[#462C00] text-3xl md:text-5xl lg:text-[44px] font-medium leading-[1.5] max-w-[810px] mb-12 md:mb-16">            &ldquo;Every weave carries a legacy. Every<br />
+          <blockquote ref={legacyQuoteRef} className="font-['Playfair_Display'] italic text-center text-[#462C00] text-3xl md:text-5xl lg:text-[44px] font-medium leading-[1.5] max-w-[810px] mb-12 md:mb-16">            &ldquo;Every weave carries a legacy. Every<br />
             thread connects generations.&rdquo;
-          </h2>
+          </blockquote>
 
 
           <div ref={legacyImageRef} className="relative w-full max-w-[520px] md:max-w-[560px] mx-auto" style={{ aspectRatio: '560/646' }}>
             <div className="absolute -top-10 -left-10 w-40 h-40 border-t border-l border-[#735C00] opacity-30 pointer-events-none" />
 
             <div className="w-full h-full overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] rounded-xs md:rounded-sm">
-              <img src={image22Asset} alt="Traditional Loom Weaving" className="w-full h-full object-cover" />
+              <img src={image22Asset} alt="Traditional Loom Weaving" className="w-full h-full object-cover" loading="lazy" decoding="async" />
             </div>
 
             <div className="absolute -bottom-10 -right-10 w-40 h-40 border-b border-r border-[#735C00] opacity-30 pointer-events-none" />
@@ -859,6 +867,8 @@ export const Home: React.FC = () => {
                   src={image29Asset}
                   alt="Malabar Silks Boutique"
                   className="w-full h-full object-cover object-center testimonial-main-img"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
@@ -880,7 +890,7 @@ export const Home: React.FC = () => {
 
                 <div className="flex items-center gap-4 mt-auto author-block">
                   <div className="w-[47px] h-[47px] rounded-full overflow-hidden shrink-0 border-[2px] border-white shadow-[0px_4px_7px_rgba(79,79,79,0.15)] bg-white">
-                    <img src={avatar1Img} alt="Michael John" className="w-full h-full object-cover" />
+                    <img src={avatar1Img} alt="Michael John" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   </div>
                   <div className="flex flex-col items-start gap-1">
                     <div 
@@ -908,6 +918,8 @@ export const Home: React.FC = () => {
                   src={image30Asset}
                   alt="Kerala Elegance Boutique"
                   className="w-full h-full object-cover object-center testimonial-main-img"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
@@ -929,7 +941,7 @@ export const Home: React.FC = () => {
 
                 <div className="flex items-center gap-4 mt-auto author-block">
                   <div className="w-[47px] h-[47px] rounded-full overflow-hidden shrink-0 border-[2px] border-white shadow-[0px_4px_7px_rgba(79,79,79,0.15)] bg-white">
-                    <img src={avatar2Img} alt="Priya Lakshmi" className="w-full h-full object-cover" />
+                    <img src={avatar2Img} alt="Priya Lakshmi" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   </div>
                   <div className="flex flex-col items-start gap-1">
                     <div 
@@ -957,6 +969,8 @@ export const Home: React.FC = () => {
                   src={image31Asset}
                   alt="Southern Heritage"
                   className="w-full h-full object-cover object-center testimonial-main-img"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
@@ -978,7 +992,7 @@ export const Home: React.FC = () => {
 
                 <div className="flex items-center gap-4 mt-auto author-block">
                   <div className="w-[47px] h-[47px] rounded-full overflow-hidden shrink-0 border-[2px] border-white shadow-[0px_4px_7px_rgba(79,79,79,0.15)] bg-white">
-                    <img src={avatar3Img} alt="Devan Nair" className="w-full h-full object-cover" />
+                    <img src={avatar3Img} alt="Devan Nair" className="w-full h-full object-cover" loading="lazy" decoding="async" />
                   </div>
                   <div className="flex flex-col items-start gap-1">
                     <div 

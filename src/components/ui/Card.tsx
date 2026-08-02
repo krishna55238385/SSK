@@ -51,7 +51,7 @@ export const Card: React.FC<CardProps> = ({
             {subtitle}
           </div>
         )}
-        <h3 className="font-serif text-lg text-brand-text mb-3">{title}</h3>
+        <div className="font-serif text-lg text-brand-text mb-3">{title}</div>
       </div>
       {swatches && swatches.length > 0 && (
         <div className="flex space-x-1 mt-auto">

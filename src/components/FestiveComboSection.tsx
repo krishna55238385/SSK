@@ -181,6 +181,8 @@ export const FestiveComboSection: React.FC = () => {
           className={`w-full h-full object-cover object-center will-change-transform transition-opacity duration-1000 ${
             bgLoaded ? "opacity-40" : "opacity-0"
           }`}
+          loading="lazy"
+          decoding="async"
         />
       </div>
 

@@ -200,6 +200,8 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               img1Loaded ? "opacity-100" : "opacity-0"
             }`}
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/45" />
           <div
@@ -231,6 +233,8 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               img2Loaded ? "opacity-100" : "opacity-0"
             }`}
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/45" />
           <div
@@ -262,6 +266,8 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               img3Loaded ? "opacity-100" : "opacity-0"
             }`}
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/45" />
           <div
@@ -293,6 +299,8 @@ export const StaggeredCheckerboardGrid: React.FC = () => {
             className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
               img4Loaded ? "opacity-100" : "opacity-0"
             }`}
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-black/45" />
           <div

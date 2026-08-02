@@ -1,12 +1,12 @@
 
-import React, { useEffect } from 'react'
+import React, { useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
-import { NewsletterPopup } from './components/ui/NewsletterPopup'
-import { Home } from './pages/Home'
-import { Collections } from './pages/Collections'
+const Home = lazy(() => import('./pages/Home').then(m => ({ default: m.Home })))
+const Collections = lazy(() => import('./pages/Collections').then(m => ({ default: m.Collections })))
+const NewsletterPopup = lazy(() => import('./components/ui/NewsletterPopup').then(m => ({ default: m.NewsletterPopup })))
 
 // Helper for scroll restoration on route changes
 const ScrollToTop: React.FC = () => {
@@ -43,14 +43,22 @@ function AppContent() {
       <Navbar />
       <main className="flex-grow">
         <AnimatePresence mode="wait">
-          <Routes location={location} key={location.pathname}>
-            <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-            <Route path="/collections" element={<PageWrapper><Collections /></PageWrapper>} />
-          </Routes>
+          <Suspense fallback={
+            <div className="min-h-screen bg-brand-light flex items-center justify-center">
+              <div className="w-10 h-10 border-4 border-brand-gold border-t-transparent rounded-full animate-spin"></div>
+            </div>
+          }>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
+              <Route path="/collections" element={<PageWrapper><Collections /></PageWrapper>} />
+            </Routes>
+          </Suspense>
         </AnimatePresence>
       </main>
       <Footer />
-      <NewsletterPopup />
+      <Suspense fallback={null}>
+        <NewsletterPopup />
+      </Suspense>
     </div>
   )
 }

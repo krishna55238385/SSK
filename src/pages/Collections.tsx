@@ -45,9 +45,9 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, title, swatches, badge
       </div>
 
       {/* Product title — Satoshi 20px / 500 / #534654 */}
-      <h4 className="font-satoshi text-[13px] sm:text-[15px] md:text-[17px] lg:text-[20px] font-medium leading-[150%] text-[#534654] text-left group-hover:text-[#43252F] transition-colors">
+      <h3 className="font-satoshi text-[13px] sm:text-[15px] md:text-[17px] lg:text-[20px] font-medium leading-[150%] text-[#534654] text-left group-hover:text-[#43252F] transition-colors">
         {title}
-      </h4>
+      </h3>
 
       {/* Swatch row */}
       <div className="flex items-center gap-[5px] sm:gap-[6px] mt-[8px]">
@@ -56,7 +56,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ image, title, swatches, badge
             key={idx}
             className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 overflow-hidden border border-[#d4cdbd]/60 shrink-0"
           >
-            <img src={src} alt="Swatch" className="w-full h-full object-cover" />
+            <img src={src} alt="Swatch" className="w-full h-full object-cover" loading="lazy" />
           </div>
         ))}
         <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 bg-[#b8a078] text-white text-[9px] sm:text-[10px] md:text-xs font-semibold flex items-center justify-center shrink-0 select-none font-satoshi">
@@ -119,6 +119,8 @@ export const Collections: React.FC = () => {
             "absolute inset-0 w-full h-full object-cover object-center transition-all duration-1000 ease-out",
             heroLoaded ? "opacity-90 scale-100" : "opacity-0 scale-105"
           )}
+          loading="eager"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-black/40" />
 

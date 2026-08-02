@@ -173,13 +173,13 @@ export const Footer: React.FC = () => {
 
             {/* Social Icons (Frame 75) */}
             <div className="flex flex-row items-center justify-center xl:justify-start gap-[32px] shrink-0 footer-social-icons" style={{ width: '160px', height: '32px' }}>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex justify-center items-center group transition-colors duration-300" style={{ width: '32px', height: '32px' }}>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="flex justify-center items-center group transition-colors duration-300" style={{ width: '32px', height: '32px' }}>
                 <Instagram className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors duration-300" style={{ width: '32px', height: '32px' }} />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex justify-center items-center group transition-colors duration-300" style={{ width: '32px', height: '32px' }}>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="flex justify-center items-center group transition-colors duration-300" style={{ width: '32px', height: '32px' }}>
                 <Facebook className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors duration-300" style={{ width: '32px', height: '32px' }} />
               </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex justify-center items-center group transition-colors duration-300" style={{ width: '32px', height: '32px' }}>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="flex justify-center items-center group transition-colors duration-300" style={{ width: '32px', height: '32px' }}>
                 <Linkedin className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors duration-300" style={{ width: '32px', height: '32px' }} />
               </a>
             </div>
