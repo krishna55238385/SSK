@@ -465,21 +465,20 @@ export const Home: React.FC = () => {
       {/* 2. Tribute Section */}
       <section
         ref={tributeSectionRef}
-        className="relative flex flex-col items-center justify-start sm:justify-center min-h-screen w-full px-4 overflow-hidden pt-[150px] sm:pt-0 pb-[24px] sm:pb-0"
+        className="relative flex flex-col items-center justify-center min-h-screen w-full px-4 py-16 md:py-24 overflow-hidden"
         style={{ background: 'linear-gradient(360deg, #FFFEFA 0%, #F7F4E4 100%)' }}
       >
-        {/* Top Image */}
-        <img
-          ref={tributeLogoRef}
-          src={sareeLogo}
-          alt="SSK Handlooms"
-          className="absolute left-1/2 -translate-x-1/2 top-[40px] w-[136px] h-[116px] object-contain"
-          loading="lazy"
-          decoding="async"
-        />
-
         {/* Content Container */}
-        <div className="flex flex-col items-center w-full max-w-[896px] gap-[40px]">
+        <div className="flex flex-col items-center w-full max-w-[896px] gap-[32px] md:gap-[40px]">
+          {/* Top Image */}
+          <img
+            ref={tributeLogoRef}
+            src={sareeLogo}
+            alt="SSK Handlooms"
+            className="w-[100px] h-[85px] md:w-[136px] md:h-[116px] object-contain mb-[10px] md:mb-[20px]"
+            loading="lazy"
+            decoding="async"
+          />
 
           {/* Top Divider */}
           <div className="relative flex justify-center items-center w-full">
@@ -682,7 +681,7 @@ export const Home: React.FC = () => {
       {/* 4. Circular Collections Layout with Section 5 Reveal */}
       <CircularImageReveal images={circleImages}>
         {/* 5. Full Width Banner - Traditions (Revealed from Center) */}
-        <div className="relative w-full h-full bg-[#FFFFFF]">
+        <div className="relative w-full h-full bg-[#FFFFFF] flex flex-col justify-between box-border pt-[24px] pb-[24px] px-[20px] sm:pt-[60px] sm:pb-[60px] sm:px-[40px] lg:pt-[100px] lg:pb-[80px] lg:px-[80px]">
           <div className="absolute inset-0 w-full h-full">
             <img
               src={traditionsImg}
@@ -702,9 +701,9 @@ export const Home: React.FC = () => {
           />
 
           {/* Top Left Heading */}
-          <div className="absolute top-[40px] sm:top-[80px] lg:top-[120px] left-[20px] sm:left-[40px] lg:left-[80px] right-[20px] sm:right-auto z-10 max-w-[693px]">
+          <div className="z-10 max-w-[693px] self-start">
             <h2
-              className="banner-title text-[#FFFFFF] text-[24px] sm:text-[36px] md:text-[52px] lg:text-[64px] font-medium leading-[120%]"
+              className="banner-title text-[#FFFFFF] text-[24px] sm:text-[32px] md:text-[44px] lg:text-[52px] xl:text-[64px] font-medium leading-[120%]"
               style={{ fontFamily: "'Playfair Display', serif", opacity: 0 }}
             >
               Some Traditions Are<br />
@@ -713,8 +712,8 @@ export const Home: React.FC = () => {
           </div>
 
           {/* Bottom Right Quote and Button */}
-          <div className="banner-content absolute bottom-[40px] sm:bottom-[80px] left-[20px] sm:left-auto right-[20px] sm:right-[40px] lg:right-[80px] z-10 w-auto max-w-[90%] sm:max-w-[450px] md:max-w-[520px] lg:max-w-[570px]" style={{ opacity: 0 }}>
-            <p className="text-[#FFFFFF] font-normal text-[13px] sm:text-[16px] md:text-[20px] lg:text-[24px] leading-[150%] mb-[16px] sm:mb-[24px] lg:mb-[32px] font-satoshi opacity-95">
+          <div className="banner-content z-10 w-full sm:max-w-[450px] md:max-w-[520px] lg:max-w-[570px] self-end mt-auto flex flex-col items-start" style={{ opacity: 0 }}>
+            <p className="text-[#FFFFFF] font-normal text-[13px] sm:text-[15px] md:text-[18px] lg:text-[20px] xl:text-[24px] leading-[150%] mb-[16px] sm:mb-[24px] lg:mb-[32px] font-satoshi opacity-95">
               "Born from the rich cultural roots of Kerala, SSK Handlooms is more than a brand - It is a commitment to preserve the art of handloom weaving and keep our traditions alive. From the looms of skilled artisans to the celebrations of today, we bring you authenticity you can feel."
             </p>
             <a
