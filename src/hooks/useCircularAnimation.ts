@@ -20,10 +20,22 @@ export const useCircularAnimation = ({ imagesCount, centerRef }: UseCircularAnim
     
     let radius = 292.5; 
     const updateRadius = () => {
+      if (!containerRef.current) return;
       const width = window.innerWidth;
-      if (width < 768) radius = 150; // mobile
-      else if (width < 1024) radius = 220; // tablet
-      else radius = 292.5; // desktop
+      if (width >= 1024) {
+        radius = 292.5; // desktop preserved exactly as it is
+        containerRef.current.style.minHeight = ''; // reset on desktop
+      } else {
+        const cardWidth = width < 768 ? 50 : 64;
+        const cardHeight = width < 768 ? 60 : 80;
+        const targetGap = 24; // visual gap of approx 20-30px
+        
+        radius = (imagesCount * (cardWidth + targetGap)) / (2 * Math.PI);
+        
+        // Ensure the circle is never clipped top/bottom
+        const minHeightNeeded = 2 * radius + cardHeight + 80; // 80px buffer (40px top, 40px bottom)
+        containerRef.current.style.minHeight = `${minHeightNeeded}px`;
+      }
     };
     
     updateRadius();
@@ -219,6 +231,9 @@ export const useCircularAnimation = ({ imagesCount, centerRef }: UseCircularAnim
         img.removeEventListener('load', checkAllLoaded);
         img.removeEventListener('error', checkAllLoaded);
       });
+      if (containerRef.current) {
+        containerRef.current.style.minHeight = '';
+      }
       if (tl.scrollTrigger) {
         tl.scrollTrigger.kill();
       }
