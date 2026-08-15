@@ -1,5 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
+import { Link } from "react-router-dom"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import heroUploadedImg from "../assets/image.webp"
@@ -368,11 +369,11 @@ export const Home: React.FC = () => {
           </p>
 
           {/* Button */}
-          <button className="group box-border flex flex-row justify-center items-center px-[28px] sm:px-[36px] lg:px-[40px] py-[12px] sm:py-[14px] lg:py-[16px] w-[200px] sm:w-[240px] lg:w-[278px] h-[44px] sm:h-[50px] lg:h-[58px] border border-[#E3C89B] bg-transparent hover:bg-[#E3C89B] transition-all duration-300 cursor-pointer lg:absolute lg:left-[40px] lg:top-[609px]">
+          <Link to="/collections" className="group box-border flex flex-row justify-center items-center px-[28px] sm:px-[36px] lg:px-[40px] py-[12px] sm:py-[14px] lg:py-[16px] w-[200px] sm:w-[240px] lg:w-[278px] h-[44px] sm:h-[50px] lg:h-[58px] border border-[#E3C89B] bg-transparent hover:bg-[#E3C89B] transition-all duration-300 cursor-pointer no-underline lg:absolute lg:left-[40px] lg:top-[609px]">
             <span className="font-satoshi font-normal text-[12px] sm:text-[14px] lg:text-[16px] leading-[24px] flex items-center justify-center tracking-[1.6px] uppercase text-[#E3C89B] group-hover:text-[#2c2214] transition-all duration-300 whitespace-nowrap">
               DISCOVER THE WEAVE
             </span>
-          </button>
+          </Link>
         </div>
 
         {/* Polaroid Cards Stack — desktop only, hidden on mobile/tablet */}
@@ -669,11 +670,11 @@ export const Home: React.FC = () => {
 
           {/* Button */}
           <div ref={weavesBtnRef} className="flex justify-center w-full">
-            <a href="/collections" className="flex justify-center items-center w-[272px] h-[60px] border border-[#735C00] hover:bg-[#735C00] transition-colors group bg-transparent">
+            <Link to="/collections" className="flex justify-center items-center w-[272px] h-[60px] border border-[#735C00] hover:bg-[#735C00] transition-colors group bg-transparent no-underline">
               <span className="text-[#735C00] group-hover:text-[#EDECE3] text-[16px] font-medium leading-[160%] tracking-[1px] uppercase font-satoshi">
                 DISCOVER THE WEAVE
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
@@ -1032,9 +1033,9 @@ export const Home: React.FC = () => {
             <p className="text-[#EEEEEE] font-normal text-sm md:text-[15px] leading-[150%] max-w-[551px] mx-auto mb-6 font-satoshi">
               From timeless kasavu classics to contemporary ethnic essentials, each piece is crafted to honor tradition while embracing modern elegance.
             </p>
-            <button className="w-full max-w-[300px] h-[48px] sm:h-[52px] border border-white px-[28px] sm:px-[32px] py-[12px] text-[13px] sm:text-[15px] font-normal tracking-[1.6px] uppercase text-white hover:bg-white hover:text-[#1F1911] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-satoshi flex items-center justify-center cursor-pointer box-border">
+            <Link to="/collections" className="w-full max-w-[300px] h-[48px] sm:h-[52px] border border-white px-[28px] sm:px-[32px] py-[12px] text-[13px] sm:text-[15px] font-normal tracking-[1.6px] uppercase text-white hover:bg-white hover:text-[#1F1911] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 font-satoshi flex items-center justify-center cursor-pointer no-underline box-border">
               DISCOVER THE COLLECTION
-            </button>
+            </Link>
           </div>
         </div>
       </section>
