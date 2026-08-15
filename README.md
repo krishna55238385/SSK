@@ -144,8 +144,9 @@ Upload the compiled folder `dist/` directly to static web hosting providers (suc
 ## 📞 Contact Details
 
 - **SSK Handlooms**
-- 📧 hello@sskhandlooms.com
-- 📍 Coimbatore, Tamil Nadu, India
+- 📧 hello@sskhandlooms.in
+- 📞 +91 82483 22396
+- 📍 106 Murugan Nagar, Peelamedu, Coimbatore - 641004
 
 ---
 

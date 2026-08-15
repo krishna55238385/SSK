@@ -152,21 +152,21 @@ export const Footer: React.FC = () => {
 
               {/* Links */}
               <div className="flex flex-col items-center xl:items-start gap-[16px] shrink-0 w-full" style={{ height: '128px' }}>
-                <a href="mailto:hello@sskhandlooms.com" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
+                <a href="mailto:hello@sskhandlooms.in" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
                   <Mail className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors" style={{ width: '18px', height: '18px' }} />
-                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>hello@sskhandlooms.com</span>
-                  <span className="absolute bottom-[-1px] left-[26px] w-[146px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>hello@sskhandlooms.in</span>
+                  <span className="absolute bottom-[-1px] left-[26px] w-[140px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </a>
-                
-                <a href="tel:+919999999999" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
+
+                <a href="tel:+918248322396" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
                   <Phone className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors" style={{ width: '18px', height: '18px' }} />
-                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>+91 99999 99999</span>
+                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>+91 82483 22396</span>
                   <span className="absolute bottom-[-1px] left-[26px] w-[106px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </a>
 
                 <div className="flex flex-row justify-center items-start gap-[8px] shrink-0" style={{ height: '48px' }}>
                   <MapPin className="text-[#735C00] mt-1 shrink-0" style={{ width: '18px', height: '18px' }} />
-                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center xl:text-left text-[#EEEEEE]" style={{ width: '174px' }}>Coimbatore, Tamil Nadu, India</span>
+                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center xl:text-left text-[#EEEEEE]" style={{ width: '234px' }}>106 Murugan Nagar, Peelamedu, Coimbatore - 641004</span>
                 </div>
               </div>
             </div>
