@@ -1,8 +1,9 @@
 import React from "react"
 import { Link } from "react-router-dom"
-import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin, ArrowUpRight } from "lucide-react"
+import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react"
 import logoImg from "../../assets/logo.webp"
 import watermarkImg from "../../assets/footer-watermark.webp"
+import { CONTACT, SOCIALS } from "../../data/contact"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -106,8 +107,10 @@ export const Footer: React.FC = () => {
               <span className="font-satoshi font-normal text-[13px] leading-[150%] flex items-center text-center text-[#A38300] shrink-0" style={{ height: '24px' }}>SHOP</span>
             </div>
 
-            {/* Frame 61 (Links) */}
-            <div className="flex flex-col items-center xl:items-start gap-[16px] shrink-0 w-full" style={{ height: '184px' }}>
+            {/* Frame 61 (Links) — w-fit so the block shrinks to its widest row
+                and the parent centres it as a unit. Rows then share one left
+                edge instead of each centring independently. */}
+            <div className="flex flex-col items-start gap-[16px] shrink-0 w-fit" style={{ height: '184px' }}>
               
               <Link to="/collections?category=women" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
                 <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>Women</span>
@@ -150,38 +153,43 @@ export const Footer: React.FC = () => {
                 <span className="font-satoshi font-normal text-[13px] leading-[150%] flex items-center text-center text-[#A38300] shrink-0" style={{ height: '24px' }}>CONTACT</span>
               </div>
 
-              {/* Links */}
-              <div className="flex flex-col items-center xl:items-start gap-[16px] shrink-0 w-full" style={{ height: '128px' }}>
-                <a href="mailto:hello@sskhandlooms.in" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
+              {/* Links — see Frame 61 above: w-fit keeps the icons on a
+                  shared left edge instead of each row centring on its own. */}
+              <div className="flex flex-col items-start gap-[16px] shrink-0 w-fit" style={{ height: '128px' }}>
+                <a href={`mailto:${CONTACT.email}`} className="relative group flex flex-row justify-start items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
                   <Mail className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors" style={{ width: '18px', height: '18px' }} />
-                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>hello@sskhandlooms.in</span>
+                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-left text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>{CONTACT.email}</span>
                   <span className="absolute bottom-[-1px] left-[26px] w-[140px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </a>
 
-                <a href="tel:+918248322396" className="relative group flex flex-row justify-center items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
+                <a href={CONTACT.phoneHref} className="relative group flex flex-row justify-start items-center gap-[8px] shrink-0" style={{ height: '24px' }}>
                   <Phone className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors" style={{ width: '18px', height: '18px' }} />
-                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>+91 82483 22396</span>
+                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-left text-[#EEEEEE] group-hover:text-white transition-colors" style={{ height: '24px' }}>{CONTACT.phone}</span>
                   <span className="absolute bottom-[-1px] left-[26px] w-[106px] h-[1px] bg-[#E3C89B] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </a>
 
-                <div className="flex flex-row justify-center items-start gap-[8px] shrink-0" style={{ height: '48px' }}>
+                <div className="flex flex-row justify-start items-start gap-[8px] shrink-0" style={{ height: '48px' }}>
                   <MapPin className="text-[#735C00] mt-1 shrink-0" style={{ width: '18px', height: '18px' }} />
-                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-center xl:text-left text-[#EEEEEE]" style={{ width: '234px' }}>106 Murugan Nagar, Peelamedu, Coimbatore - 641004</span>
+                  <span className="font-satoshi font-normal text-[14px] leading-[150%] flex items-center text-left text-[#EEEEEE]" style={{ width: '234px' }}>{CONTACT.address}</span>
                 </div>
               </div>
             </div>
 
             {/* Social Icons (Frame 75) */}
             <div className="flex flex-row items-center justify-center xl:justify-start gap-[32px] shrink-0 footer-social-icons" style={{ width: '160px', height: '32px' }}>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" className="flex justify-center items-center group transition-colors duration-300" style={{ width: '32px', height: '32px' }}>
-                <Instagram className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors duration-300" style={{ width: '32px', height: '32px' }} />
-              </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="flex justify-center items-center group transition-colors duration-300" style={{ width: '32px', height: '32px' }}>
-                <Facebook className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors duration-300" style={{ width: '32px', height: '32px' }} />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="flex justify-center items-center group transition-colors duration-300" style={{ width: '32px', height: '32px' }}>
-                <Linkedin className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors duration-300" style={{ width: '32px', height: '32px' }} />
-              </a>
+              {SOCIALS.map(({ name, href, Icon }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Follow SSK Handlooms on ${name}`}
+                  className="flex justify-center items-center group transition-colors duration-300"
+                  style={{ width: '32px', height: '32px' }}
+                >
+                  <Icon className="text-[#735C00] group-hover:text-[#E1C28E] transition-colors duration-300" style={{ width: '32px', height: '32px' }} />
+                </a>
+              ))}
             </div>
           </div>
         </div>

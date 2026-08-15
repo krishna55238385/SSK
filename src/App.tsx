@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import gsap from 'gsap'
 import { Navbar } from './components/layout/Navbar'
 import { Footer } from './components/layout/Footer'
+import { ContactSection } from './components/ContactSection'
 import { NewsletterPopup } from './components/ui/NewsletterPopup'
 
 // Lazy-loaded route pages: keeps the initial bundle to just what "/" needs,
@@ -73,6 +74,9 @@ function AppContent() {
           </Routes>
         </Suspense>
       </main>
+      {/* Outside <Routes> so the navbar's "Get In Touch" (#contact) anchor
+          resolves on every route, not just the home page. */}
+      <ContactSection />
       <Footer />
       <NewsletterPopup />
     </div>
