@@ -141,6 +141,14 @@ Upload the compiled folder `dist/` directly to static web hosting providers (suc
 
 ---
 
+## 📊 Analytics & Tracking
+
+- **Google Analytics 4** (`gtag.js`) is wired into [`index.html`](index.html), measurement ID `G-YLDGLZS5E7`. It tracks pageviews and standard engagement events across all routes.
+- **Google Search Console** ownership is verified via [`public/googleb020222b2c40f6f9.html`](public/googleb020222b2c40f6f9.html), served statically at the site root.
+- Data collection is disclosed to visitors on the [`/privacy-policy`](src/pages/PrivacyPolicy.tsx) page, linked from the footer.
+
+---
+
 ## 📞 Contact Details
 
 - **SSK Handlooms**
