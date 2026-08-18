@@ -11,7 +11,7 @@ export const PrivacyPolicy: React.FC = () => {
         >
           Privacy Policy
         </h1>
-        <p className="text-sm text-brand-text/60 mb-12">Last updated: 18 August 2026</p>
+        <p className="text-sm text-brand-text/60 mb-12">Last updated: 18 August 2026 (revised)</p>
 
         <div className="flex flex-col gap-10 font-satoshi text-[15px] leading-[170%] text-brand-text">
           <section>
@@ -44,6 +44,18 @@ export const PrivacyPolicy: React.FC = () => {
               >
                 Google's Privacy & Terms page
               </a>
+              . We also use <strong>Microsoft Clarity</strong> to record aggregated behavioural
+              analytics — such as scroll depth, clicks, and session heatmaps — so we can understand
+              usability issues and improve page layout. Clarity may set cookies and collect device,
+              browser, and interaction data. Details are available on{" "}
+              <a
+                href="https://learn.microsoft.com/en-us/clarity/faq"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brand-gold underline underline-offset-2"
+              >
+                Microsoft Clarity's FAQ & Privacy page
+              </a>
               .
             </p>
           </section>
@@ -51,9 +63,10 @@ export const PrivacyPolicy: React.FC = () => {
           <section>
             <h2 className="font-serif text-xl text-brand-dark mb-3">3. Cookies</h2>
             <p>
-              Cookies set by Google Analytics let us distinguish visitors and measure site usage in
-              aggregate; they do not by themselves identify you personally. Most browsers let you block
-              or delete cookies, or you can opt out of Google Analytics tracking site-wide using the{" "}
+              Cookies set by Google Analytics and Microsoft Clarity let us distinguish visitors and
+              measure site usage and behaviour in aggregate; they do not by themselves identify you
+              personally. Most browsers let you block or delete cookies. You can also opt out
+              site-wide of Google Analytics using the{" "}
               <a
                 href="https://tools.google.com/dlpage/gaoptout"
                 target="_blank"
