@@ -12,6 +12,9 @@ const Home = lazy(() => import('./pages/Home').then((m) => ({ default: m.Home })
 const Collections = lazy(() =>
   import('./pages/Collections').then((m) => ({ default: m.Collections }))
 )
+const PrivacyPolicy = lazy(() =>
+  import('./pages/PrivacyPolicy').then((m) => ({ default: m.PrivacyPolicy }))
+)
 
 // Helper for scroll restoration on route changes
 const ScrollToTop: React.FC = () => {
@@ -71,6 +74,7 @@ function AppContent() {
           <Routes>
             <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
             <Route path="/collections" element={<PageWrapper><Collections /></PageWrapper>} />
+            <Route path="/privacy-policy" element={<PageWrapper><PrivacyPolicy /></PageWrapper>} />
           </Routes>
         </Suspense>
       </main>

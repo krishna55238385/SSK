@@ -203,10 +203,16 @@ export const Footer: React.FC = () => {
         <div className="relative xl:absolute z-10 footer-divider-bottom w-full xl:w-[976px] h-[1px] xl:left-[112px] xl:top-[470px] my-8 xl:my-0" style={{ background: 'linear-gradient(90deg, rgba(67, 51, 23, 0) 0%, rgba(67, 51, 23, 0.5) 50%, rgba(67, 51, 23, 0) 100%)', transform: 'matrix(1, 0, 0, -1, 0, 0)' }} />
 
         {/* Frame 8 (Copyright Text) */}
-        <div className="relative xl:absolute flex justify-center items-center z-10 w-full xl:w-[363px] xl:left-[418.5px] xl:top-[490px] footer-copyright">
-          <span className="font-satoshi font-light text-[14px] leading-[150%] tracking-[-0.01em] text-[#9E9E9E] text-center w-full block">
+        <div className="relative xl:absolute flex flex-col md:flex-row justify-center items-center gap-2 md:gap-4 z-10 w-full xl:w-[500px] xl:left-[348px] xl:top-[490px] footer-copyright">
+          <span className="font-satoshi font-light text-[14px] leading-[150%] tracking-[-0.01em] text-[#9E9E9E] text-center block">
             All rights reserved © 2026 Copyright SSK Handlooms
           </span>
+          <Link
+            to="/privacy-policy"
+            className="font-satoshi font-light text-[14px] leading-[150%] tracking-[-0.01em] text-[#9E9E9E] hover:text-[#E1C28E] transition-colors underline underline-offset-2"
+          >
+            Privacy Policy
+          </Link>
         </div>
 
       </div>
